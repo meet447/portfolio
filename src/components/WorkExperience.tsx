@@ -3,8 +3,8 @@ const WorkExperience = () => {
     {
       title: "Smart India Hackathon Winner",
       company: "",
-      location: "Madhyapradesh, India",
-      period: "Jul 2021 - Dec 2021",
+      location: "Madhya Pradesh, India",
+      period: "Dec 2025",
       duration: "6 months",
       progress: 70,
       responsibilities: [
@@ -16,7 +16,7 @@ const WorkExperience = () => {
     {
       title: "Techinical Head",
       company: "E-CELL BVCOE",
-      location: "Bharati Vidya College of Engineering",
+      location: "Bharati Vidyapeeth College of Engineering",
       period: "Sept 2024 - Jan 2025",
       duration: "5 months",
       progress: 100,
