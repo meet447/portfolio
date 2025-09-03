@@ -4,7 +4,7 @@ const WorkExperience = () => {
       title: "Smart India Hackathon Winner",
       company: "",
       location: "Madhya Pradesh, India",
-      period: "Dec 2025",
+      period: "Dec 2024",
       duration: "6 months",
       progress: 70,
       responsibilities: [
