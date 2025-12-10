@@ -14,19 +14,6 @@ const WorkExperience = () => {
       ]
     },
     {
-      title: "Smart India Hackathon Winner",
-      company: "",
-      location: "Madhya Pradesh, India",
-      period: "Dec 2024",
-      duration: "6 months",
-      progress: 70,
-      responsibilities: [
-        "Devloped a software for madhyapradesh police for identifying the actual host of a website or domain",
-        "Created and implented an solution for detcting the true host ip even if the site is protected by CDNs or security services.",
-        "Our software stood out for its ability to uncover the true origin host, showcasing technical sophistication and real-world applications in cybersecurity"
-      ]
-    },
-    {
       title: "Techinical Head",
       company: "E-CELL BVCOE",
       location: "Bharati Vidyapeeth College of Engineering",

@@ -2,7 +2,8 @@ import Header from "@/components/Header";
 import ThemeToggle from "@/components/ThemeToggle";
 import About from "@/components/About";
 import ProjectsSection from "@/components/ProjectsSection";
-import WorkExperience from "@/components/WorkExperience"; 
+import WorkExperience from "@/components/WorkExperience";
+import Achievements from "@/components/Achievements";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import HireMeBanner from "@/components/HireMeBanner";
@@ -15,12 +16,13 @@ const Index = () => {
       <main>
         <About />
         <WorkExperience />
+        <Achievements />
         <Skills />
         <ProjectsSection />
         <Education />
         <HireMeBanner />
       </main>
-      
+
       {/* Footer */}
       <footer className="container-resume py-8 border-t border-border mt-16">
         <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">

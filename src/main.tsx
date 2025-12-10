@@ -1,5 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { Buffer } from 'buffer';
+
+// Polyfill Buffer for the browser
+window.Buffer = window.Buffer || Buffer;
+
 import App from './App.tsx';
 import './index.css';
 

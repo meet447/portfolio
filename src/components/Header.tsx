@@ -17,6 +17,9 @@ const Header = () => {
             <a href="/projects" className="text-xs sm:text-sm hover:text-accent transition-colors">
               Projects
             </a>
+            <a href="/blog" className="text-xs sm:text-sm hover:text-accent transition-colors">
+              Technical Notes
+            </a>
           </nav>
         </div>
       </div>
