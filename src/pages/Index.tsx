@@ -7,6 +7,7 @@ import Achievements from "@/components/Achievements";
 import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import HireMeBanner from "@/components/HireMeBanner";
+import LatestBlogs from "@/components/LatestBlogs";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
         <Achievements />
         <Skills />
         <ProjectsSection />
+        <LatestBlogs />
         <Education />
         <HireMeBanner />
       </main>

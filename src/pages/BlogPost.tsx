@@ -5,6 +5,7 @@ import Markdown from 'react-markdown';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from '@/components/ThemeToggle';
+import Mermaid from '@/components/Mermaid';
 import NotFound from './NotFound';
 
 const BlogPostPage = () => {
@@ -62,7 +63,20 @@ const BlogPostPage = () => {
             prose-code:text-accent prose-code:bg-muted/50 prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
             prose-pre:bg-muted/30 prose-pre:border prose-pre:border-border
           ">
-                        <Markdown>{blog.content}</Markdown>
+                        <Markdown
+                            components={{
+                                code(props) {
+                                    const { children, className, node, ...rest } = props;
+                                    const match = /language-(\w+)/.exec(className || '');
+                                    if (match && match[1] === 'mermaid') {
+                                        return <Mermaid chart={String(children).replace(/\n$/, '')} />;
+                                    }
+                                    return <code {...rest} className={className}>{children}</code>;
+                                }
+                            }}
+                        >
+                            {blog.content}
+                        </Markdown>
                     </div>
                 </article>
             </div>
