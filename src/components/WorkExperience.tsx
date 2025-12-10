@@ -1,6 +1,19 @@
 const WorkExperience = () => {
   const experiences = [
     {
+      title: "MLOps Intern",
+      company: "Hooman Digital LLP",
+      location: "Remote",
+      period: "Nov 2025 - Present",
+      duration: "Present",
+      progress: 90,
+      responsibilities: [
+        "Developing an LLM management and inference service leveraging both decentralized and centralized GPU resources, optimizing for cost and performance.",
+        "Architected and implemented a comprehensive framework for orchestrating GPU workloads, enabling seamless integration of diverse compute providers similar to SkyPilot.",
+        "Managed the deployment and scaling of large language models, ensuring high availability and efficient resource utilization across distributed infrastructure."
+      ]
+    },
+    {
       title: "Smart India Hackathon Winner",
       company: "",
       location: "Madhya Pradesh, India",
