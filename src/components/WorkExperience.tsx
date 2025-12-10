@@ -43,13 +43,13 @@ const WorkExperience = () => {
   return (
     <section className="container-resume section-spacing">
       <h2 className="text-section-title"># WORK EXPERIENCE</h2>
-      
-      <div className="space-y-8">
+
+      <div className="">
         {experiences.map((exp, index) => (
-          <div key={index} className="job-spacing border-l-2 border-accent/20 pl-6 relative">
+          <div key={index} className="pb-8 last:pb-0 border-l-2 border-accent/20 pl-6 relative">
             {/* Progress indicator */}
             <div className="absolute -left-2 top-0 w-4 h-4 bg-accent rounded-full border-2 border-background"></div>
-            
+
             {/* Job Header */}
             <div className="flex flex-col mb-4">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
