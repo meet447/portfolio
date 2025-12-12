@@ -42,7 +42,7 @@ const ProjectsSection = () => {
       image: "/projects/axiom.png",
       tech: ["Next JS", "Node.js", "Fast API", "Supabase", "Redis"],
       github: "https://github.com/meet447/Axiomai",
-      live: "https://axiom-ivory.vercel.app"
+      live: "https://axiom.chipling.xyz"
     }
   ];
 

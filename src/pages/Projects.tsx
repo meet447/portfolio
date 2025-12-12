@@ -29,7 +29,7 @@ const Projects = () => {
       image: dashboardImage,
       tech: ["TypeScript", "Next.js", "LLMs", "PostgreSQL"],
       github: "https://github.com/meet447/axiomai",
-      live: "https://github.com/meet447/axiomai",
+      live: "https://axiom.chipling.xyz",
       featured: true,
       year: "2025"
     },
