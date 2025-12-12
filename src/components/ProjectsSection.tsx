@@ -10,15 +10,6 @@ const ProjectsSection = () => {
   const featuredProjects = [
     {
       id: 1,
-      title: "Domain Hunter",
-      description: "A robust tool to find the real host and masked Ip of any domain",
-      image: "/projects/Domainhunter.png",
-      tech: ["Python", "Firebase", "Node.js", "PostgreSQL", "Docker", "Web Scrapping", "Reverse Engineering"],
-      github: "",
-      live: ""
-    },
-    {
-      id: 2,
       title: "Unio",
       description: "A unified API service for developers who use multiple LLM providers. The goal is to make AI development easier, cheaper, and more reliable.",
       image: "/projects/unio.png",
@@ -27,7 +18,7 @@ const ProjectsSection = () => {
       live: "https://unio.chipling.xyz"
     },
     {
-      id: 3,
+      id: 2,
       title: "Chipling",
       description: "Explore any academic or research topic in a structured, progressively expanding format designed for deep understanding.",
       image: "/projects/chipling.png",
@@ -36,7 +27,7 @@ const ProjectsSection = () => {
       live: "https://chipling.xyz"
     },
     {
-      id: 4,
+      id: 3,
       title: "Axiom",
       description: "Open Source AI search engine similar Perplexity AI but with ai agents and more features.",
       image: "/projects/axiom.png",
