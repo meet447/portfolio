@@ -10,21 +10,21 @@ const ProjectsSection = () => {
   const featuredProjects = [
     {
       id: 1,
+      title: "Chipling",
+      description: "The Visual Discovery Engine. A digital ocean that uses vector embeddings to let you search, curate, and discover inspiration by concept rather than keywords.",
+      image: "/projects/chipling.png",
+      tech: ["Next.js", "Supabase", "PostgreSQL", "FastAPI", "Vector Embeddings"], // Updated based on your actual stack
+      github: "https://chipling.xyz", // Double check this link, looks like a placeholder?
+      live: "https://chipling.xyz"
+    },
+    {
+      id: 2,
       title: "Unio",
       description: "A unified API service for developers who use multiple LLM providers. The goal is to make AI development easier, cheaper, and more reliable.",
       image: "/projects/unio.png",
       tech: ["Python", "FastAPI", "Docker", "React", "Supabase", "Redis"],
       github: "https://github.com/meet447/Unio",
       live: "https://unio.chipling.xyz"
-    },
-    {
-      id: 2,
-      title: "Chipling",
-      description: "Explore any academic or research topic in a structured, progressively expanding format designed for deep understanding.",
-      image: "/projects/chipling.png",
-      tech: ["React", "Firebase", "PostgreSQL", "FastAPI"],
-      github: "https://github.com/vkubre/analytics-dashboard",
-      live: "https://chipling.xyz"
     },
     {
       id: 3,
