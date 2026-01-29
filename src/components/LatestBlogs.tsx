@@ -34,7 +34,7 @@ const LatestBlogs = () => {
                             </div>
                             <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
                                 {blog.title}
-                                `</h3>
+                            </h3>
                             <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-grow">
                                 {blog.description}
                             </p>
