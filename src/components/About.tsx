@@ -1,4 +1,9 @@
+import { GitHubCalendar } from 'react-github-calendar';
+import { useTheme } from 'next-themes';
+
 const About = () => {
+  const { resolvedTheme } = useTheme();
+
   return (
     <section id="about" className="container-resume section-spacing">
       <h2 className="text-section-title"># ABOUT ME</h2>
@@ -15,6 +20,26 @@ const About = () => {
           
           <p>
             When I'm not coding, you'll find me exploring the latest technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in writing clean, well-documented code and following best practices to deliver robust software solutions.
+          </p>
+        </div>
+
+        {/* GitHub Contribution Graph */}
+        <div className="mt-10 p-6 border border-border rounded-lg bg-card/50">
+          <h3 className="text-job-title mb-6 flex items-center gap-2">
+            <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+            Contribution Graph
+          </h3>
+          <div className="flex justify-center overflow-hidden">
+            <GitHubCalendar 
+              username="meet447" 
+              blockSize={12}
+              blockMargin={4}
+              fontSize={12}
+              colorScheme={resolvedTheme === 'dark' ? 'dark' : 'light'}
+            />
+          </div>
+          <p className="text-[10px] text-muted-foreground mt-4 font-mono text-center italic">
+            "Code is like humor. When you have to explain it, it’s bad." – Cory House
           </p>
         </div>
 
