@@ -15,7 +15,7 @@ const Projects = () => {
       id: 8,
       title: "SurgeDB",
       description: "A SIMD-powered, ultra-lightweight vector database for the Edge, written in pure Rust. Features Adaptive HNSW indexing, SQ8/Binary quantization, and ACID-compliant persistence.",
-      image: monitoringImage,
+      image: "/projects/SurgeDB.png",
       tech: ["Rust", "SIMD", "HNSW", "Vector Database", "WASM"],
       github: "https://github.com/meet447/surgedb",
       live: "https://github.com/meet447/surgedb",

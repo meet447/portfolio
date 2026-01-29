@@ -12,7 +12,7 @@ const ProjectsSection = () => {
       id: 4,
       title: "SurgeDB",
       description: "A SIMD-powered, ultra-lightweight vector database for the Edge. Optimized for Apple Silicon and modern x86 hardware, indexing 100k vectors with just 39MB RAM.",
-      image: monitoringImage,
+      image: "/projects/SurgeDB.png",
       tech: ["Rust", "SIMD", "HNSW", "Vector Database"],
       github: "https://github.com/meet447/surgedb",
       live: "https://github.com/meet447/surgedb"
