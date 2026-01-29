@@ -48,10 +48,13 @@ const CommandPalette = () => {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background shadow-lg hover:bg-accent hover:text-accent-foreground transition-all duration-300 sm:h-12 sm:w-12"
+        className="fixed top-4 right-16 z-50 flex h-10 items-center justify-center rounded-md border border-border bg-background shadow-sm hover:bg-accent hover:text-accent-foreground transition-all duration-300 sm:w-auto px-2 w-10"
         title="Open Command Palette (⌘K)"
       >
-        <Search size={20} />
+        <div className="flex items-center gap-1.5">
+          <Search size={16} />
+          <span className="text-[10px] font-bold border border-border rounded px-1 bg-muted/50 hidden sm:block">⌘K</span>
+        </div>
       </button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
