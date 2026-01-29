@@ -1,10 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
-import { Github, Linkedin, Mail, FileText, MapPin } from "lucide-react";
+import { Github, Linkedin, Mail, FileText, MapPin, Copy, Check } from "lucide-react";
+import { toast } from "sonner";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const [copied, setCopied] = useState(false);
+  const email = "meetsonawane3@gmail.com";
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    toast.success("Email copied to clipboard!");
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <header className="bg-background border-b border-border">
@@ -44,12 +55,23 @@ const Header = () => {
 
           {/* CTA Buttons - Smaller on subpages */}
           <div className={`flex flex-wrap items-center justify-center gap-4 ${isHome ? 'mb-10' : 'mb-6'}`}>
-            <a href="mailto:meetsonawane3@gmail.com">
-              <Button variant="default" size="sm" className="font-mono h-9 px-5 text-xs">
-                <Mail size={14} className="mr-2" />
-                Get in Touch
+            <div className="flex items-center gap-2">
+              <a href={`mailto:${email}`}>
+                <Button variant="default" size="sm" className="font-mono h-9 px-5 text-xs">
+                  <Mail size={14} className="mr-2" />
+                  Get in Touch
+                </Button>
+              </a>
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="h-9 w-9" 
+                onClick={copyEmail}
+                title="Copy email to clipboard"
+              >
+                {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
               </Button>
-            </a>
+            </div>
             <a href="/resume.pdf" target="_blank">
               <Button variant="outline" size="sm" className="font-mono h-9 px-5 text-xs">
                 <FileText size={14} className="mr-2" />
