@@ -111,7 +111,6 @@ const BlogPostPage = () => {
                         </Markdown>
                     </div>
                 </article>
-            </div>
         </motion.div>
     );
 };

@@ -134,7 +134,6 @@ const Projects = () => {
           {/* Get in Touch Banner */}
           <GetInTouchBanner />
         </main>
-      </div>
     </motion.div>
   );
 };

@@ -48,7 +48,6 @@ const BlogList = () => {
                         ))}
                     </div>
                 </main>
-            </div>
         </motion.div>
     );
 };
