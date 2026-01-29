@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BlogPost, getAllBlogs } from '@/lib/blogUtils';
-import { ArrowLeft, Calendar } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import ThemeToggle from '@/components/ThemeToggle';
+import { Calendar } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -13,23 +12,14 @@ const BlogList = () => {
     }, []);
 
     return (
-        <>
-            <ThemeToggle />
-            <div className="min-h-screen bg-background font-mono">
-                <header className="container-resume py-8 border-b border-border">
-                    <div className="flex items-center gap-4 mb-6">
-                        <Link to="/">
-                            <Button variant="outline" size="sm" className="font-mono">
-                                <ArrowLeft size={16} className="mr-2" />
-                                Back to Resume
-                            </Button>
-                        </Link>
-                    </div>
-                    <h1 className="text-4xl font-bold tracking-wider mb-2">TECHNICAL NOTES</h1>
-                    <p className="text-muted-foreground">Thoughts on LLMs, GPU orchestration, and software engineering.</p>
-                </header>
-
-                <main className="container-resume py-12">
+        <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="min-h-screen bg-background font-mono"
+        >
+            <main className="container-resume py-12">
                     <div className="space-y-8">
                         {blogs.map((blog) => (
                             <Link to={`/blog/${blog.slug}`} key={blog.slug} className="block group">
@@ -59,7 +49,7 @@ const BlogList = () => {
                     </div>
                 </main>
             </div>
-        </>
+        </motion.div>
     );
 };
 

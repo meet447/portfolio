@@ -19,9 +19,12 @@ const fadeInUp = {
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <ThemeToggle />
-      <Header />
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-background"
+    >
       <main>
         <motion.div {...fadeInUp}>
           <About />
@@ -48,25 +51,9 @@ const Index = () => {
           <HireMeBanner />
         </motion.div>
       </main>
-
-      {/* Footer */}
-      <footer className="container-resume py-8 border-t border-border mt-16">
-        <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-          <a href="mailto:meetsonawane3@gmail.com" className="hover:text-accent transition-colors">
-            meetsonawane3@gmail.com
-          </a>
-          <span>•</span>
-          <a href="https://www.linkedin.com/in/meet-sonawane/" className="hover:text-accent transition-colors">
-            LinkedIn
-          </a>
-          <span>•</span>
-          <a href="https://github.com/meet447" className="hover:text-accent transition-colors">
-            GitHub
-          </a>
-        </div>
-      </footer>
-    </div>
+    </motion.div>
   );
 };
+
 
 export default Index;

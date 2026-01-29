@@ -1,13 +1,11 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
-import ThemeToggle from "@/components/ThemeToggle";
+import { ExternalLink, Github } from "lucide-react";
 import GetInTouchBanner from "@/components/GetInTouchBanner";
 import dashboardImage from "@/assets/project-dashboard.png";
 import chatbotImage from "@/assets/project-chatbot.png";
 import monitoringImage from "@/assets/project-monitoring.png";
 import ecommerceImage from "@/assets/project-ecommerce.png";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const allProjects = [
@@ -105,24 +103,14 @@ const Projects = () => {
   const otherProjects = allProjects.filter(project => !project.featured);
 
   return (
-    <>
-      <ThemeToggle />
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="container-resume py-8 border-b border-border">
-          <div className="flex items-center gap-4 mb-6">
-            <Link to="/">
-              <Button variant="outline" size="sm" className="font-mono">
-                <ArrowLeft size={16} className="mr-2" />
-                Back to Resume
-              </Button>
-            </Link>
-          </div>
-          <h1 className="text-4xl font-bold tracking-wider mb-2">ALL PROJECTS</h1>
-          <p className="text-muted-foreground">A comprehensive showcase of my development work and contributions</p>
-        </header>
-
-        <main className="container-resume">
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.3 }}
+      className="min-h-screen bg-background"
+    >
+      <main className="container-resume">
           {/* Featured Projects */}
           <section className="section-spacing">
             <h2 className="text-section-title"># FEATURED PROJECTS</h2>
@@ -147,7 +135,7 @@ const Projects = () => {
           <GetInTouchBanner />
         </main>
       </div>
-    </>
+    </motion.div>
   );
 };
 

@@ -7,10 +7,10 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ThemeToggle from '@/components/ThemeToggle';
 import Mermaid from '@/components/Mermaid';
 import NotFound from './NotFound';
 import { useTheme } from 'next-themes';
+import { motion } from 'framer-motion';
 
 const BlogPostPage = () => {
     const { slug } = useParams<{ slug: string }>();
@@ -31,10 +31,14 @@ const BlogPostPage = () => {
     if (!blog) return <NotFound />;
 
     return (
-        <>
-            <ThemeToggle />
-            <div className="min-h-screen bg-background font-mono">
-                <article className="container-resume py-12">
+        <motion.div 
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.3 }}
+            className="min-h-screen bg-background font-mono"
+        >
+            <article className="container-resume py-12">
                     {/* Header */}
                     <div className="mb-8 border-b border-border pb-8">
                         <Link to="/blog">
@@ -108,7 +112,7 @@ const BlogPostPage = () => {
                     </div>
                 </article>
             </div>
-        </>
+        </motion.div>
     );
 };
 
