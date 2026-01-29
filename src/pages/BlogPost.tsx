@@ -80,17 +80,21 @@ const BlogPostPage = () => {
                                     }
 
                                     return match ? (
-                                        <SyntaxHighlighter
-                                            PreTag="div"
-                                            children={String(children).replace(/\n$/, '')}
-                                            language={match[1]}
-                                            style={resolvedTheme === 'dark' ? vscDarkPlus : vs}
-                                            customStyle={{
-                                                margin: '1.5rem 0',
-                                                borderRadius: '0.5rem',
-                                                fontSize: '0.875rem',
-                                            }}
-                                        />
+                                        <div className="not-prose">
+                                            <SyntaxHighlighter
+                                                PreTag="div"
+                                                children={String(children).replace(/\n$/, '')}
+                                                language={match[1]}
+                                                style={resolvedTheme === 'dark' ? vscDarkPlus : vs}
+                                                customStyle={{
+                                                    margin: '1.5rem 0',
+                                                    borderRadius: '0.5rem',
+                                                    fontSize: '0.875rem',
+                                                    backgroundColor: resolvedTheme === 'dark' ? '#1e1e1e' : '#f8f8f8',
+                                                    padding: '1.5rem',
+                                                }}
+                                            />
+                                        </div>
                                     ) : (
                                         <code {...rest} className={className}>
                                             {children}
