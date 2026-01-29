@@ -21,6 +21,9 @@ const BlogPostPage = () => {
 
     useEffect(() => {
         if (slug) {
+            // Scroll to top when slug changes
+            window.scrollTo(0, 0);
+
             getBlogBySlug(slug).then((data) => {
                 setBlog(data);
                 setLoading(false);
