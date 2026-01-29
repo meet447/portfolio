@@ -24,7 +24,7 @@ const Header = () => {
           {/* Metadata */}
           <div className="flex items-center gap-4 text-xs text-muted-foreground mb-8 font-mono">
             <span className="flex items-center gap-1">
-              <MapPin size={12} /> Pune, India
+              <MapPin size={12} /> India
             </span>
             <span>•</span>
             <span>Local Time: {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
