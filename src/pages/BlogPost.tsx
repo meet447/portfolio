@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BlogPost, getBlogBySlug } from '@/lib/blogUtils';
 import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -64,6 +65,7 @@ const BlogPostPage = () => {
             prose-pre:bg-muted/30 prose-pre:border prose-pre:border-border
           ">
                         <Markdown
+                            remarkPlugins={[remarkGfm]}
                             components={{
                                 code(props) {
                                     const { children, className, node, ...rest } = props;
