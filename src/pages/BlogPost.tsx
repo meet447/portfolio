@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { BlogPost, getBlogBySlug } from '@/lib/blogUtils';
+import { BlogPost, getAllBlogs, getBlogBySlug } from '@/lib/blogUtils';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Mermaid from '@/components/Mermaid';
 import NotFound from './NotFound';
@@ -15,6 +15,7 @@ import { motion } from 'framer-motion';
 const BlogPostPage = () => {
     const { slug } = useParams<{ slug: string }>();
     const [blog, setBlog] = useState<BlogPost | null>(null);
+    const [moreBlogs, setMoreBlogs] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
     const { resolvedTheme } = useTheme();
 
@@ -23,6 +24,12 @@ const BlogPostPage = () => {
             getBlogBySlug(slug).then((data) => {
                 setBlog(data);
                 setLoading(false);
+            });
+
+            getAllBlogs().then((all) => {
+                const others = all.filter(b => b.slug !== slug);
+                const shuffled = others.sort(() => 0.5 - Math.random());
+                setMoreBlogs(shuffled.slice(0, 3));
             });
         }
     }, [slug]);
@@ -111,6 +118,45 @@ const BlogPostPage = () => {
                         </Markdown>
                     </div>
                 </article>
+
+                {/* Explore More Section */}
+                {moreBlogs.length > 0 && (
+                    <div className="container-resume border-t border-border py-12 mt-12">
+                        <div className="flex items-center justify-between mb-8">
+                            <h2 className="text-xl font-bold font-mono tracking-tight text-foreground"># EXPLORE MORE</h2>
+                            <Link to="/blog">
+                                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                                    View All <ArrowRight size={14} className="ml-2" />
+                                </Button>
+                            </Link>
+                        </div>
+                        <div className="grid gap-6 md:grid-cols-3">
+                            {moreBlogs.map((item) => (
+                                <Link to={`/blog/${item.slug}`} key={item.slug} className="group h-full">
+                                    <article className="border border-border p-5 rounded-lg h-full hover:bg-muted/30 transition-colors flex flex-col">
+                                        <div className="flex items-center text-[10px] text-muted-foreground mb-2 font-mono">
+                                            <Calendar size={10} className="mr-1.5" />
+                                            {item.date}
+                                        </div>
+                                        <h3 className="text-sm font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2 leading-snug">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-[11px] text-muted-foreground line-clamp-2 flex-grow mb-4">
+                                            {item.description}
+                                        </p>
+                                        <div className="flex flex-wrap gap-1.5 mt-auto">
+                                            {item.tags?.slice(0, 2).map((tag) => (
+                                                <span key={tag} className="text-[9px] px-1.5 py-0.5 bg-muted rounded font-mono">
+                                                    #{tag}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </article>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
         </motion.div>
     );
 };
