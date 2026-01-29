@@ -3,16 +3,20 @@ import { useParams, Link } from 'react-router-dom';
 import { BlogPost, getBlogBySlug } from '@/lib/blogUtils';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from '@/components/ThemeToggle';
 import Mermaid from '@/components/Mermaid';
 import NotFound from './NotFound';
+import { useTheme } from 'next-themes';
 
 const BlogPostPage = () => {
     const { slug } = useParams<{ slug: string }>();
     const [blog, setBlog] = useState<BlogPost | null>(null);
     const [loading, setLoading] = useState(true);
+    const { resolvedTheme } = useTheme();
 
     useEffect(() => {
         if (slug) {
@@ -62,7 +66,7 @@ const BlogPostPage = () => {
             prose-p:leading-relaxed
             prose-a:text-accent prose-a:no-underline hover:prose-a:underline
             prose-code:text-accent prose-code:bg-muted/50 prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-muted/30 prose-pre:border prose-pre:border-border
+            prose-pre:bg-transparent prose-pre:p-0 prose-pre:border-none
           ">
                         <Markdown
                             remarkPlugins={[remarkGfm]}
@@ -70,10 +74,28 @@ const BlogPostPage = () => {
                                 code(props) {
                                     const { children, className, node, ...rest } = props;
                                     const match = /language-(\w+)/.exec(className || '');
+                                    
                                     if (match && match[1] === 'mermaid') {
                                         return <Mermaid chart={String(children).replace(/\n$/, '')} />;
                                     }
-                                    return <code {...rest} className={className}>{children}</code>;
+
+                                    return match ? (
+                                        <SyntaxHighlighter
+                                            PreTag="div"
+                                            children={String(children).replace(/\n$/, '')}
+                                            language={match[1]}
+                                            style={resolvedTheme === 'dark' ? vscDarkPlus : vs}
+                                            customStyle={{
+                                                margin: '1.5rem 0',
+                                                borderRadius: '0.5rem',
+                                                fontSize: '0.875rem',
+                                            }}
+                                        />
+                                    ) : (
+                                        <code {...rest} className={className}>
+                                            {children}
+                                        </code>
+                                    );
                                 }
                             }}
                         >
