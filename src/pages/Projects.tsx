@@ -12,6 +12,17 @@ import ecommerceImage from "@/assets/project-ecommerce.png";
 const Projects = () => {
   const allProjects = [
     {
+      id: 8,
+      title: "SurgeDB",
+      description: "A SIMD-powered, ultra-lightweight vector database for the Edge, written in pure Rust. Features Adaptive HNSW indexing, SQ8/Binary quantization, and ACID-compliant persistence.",
+      image: monitoringImage,
+      tech: ["Rust", "SIMD", "HNSW", "Vector Database", "WASM"],
+      github: "https://github.com/meet447/surgedb",
+      live: "https://github.com/meet447/surgedb",
+      featured: true,
+      year: "2026"
+    },
+    {
       id: 1,
       title: "Unio",
       description: "A unified OpenAI-compatible API service where users can add keys for multiple LLM providers, enabling seamless key rotation, fallback, and centralized model management.",
