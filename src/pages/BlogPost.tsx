@@ -18,6 +18,18 @@ const BlogPostPage = () => {
     const [moreBlogs, setMoreBlogs] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
     const { resolvedTheme } = useTheme();
+    const [scrollProgress, setScrollProgress] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            setScrollProgress(progress);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         if (slug) {
@@ -40,6 +52,8 @@ const BlogPostPage = () => {
     if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
     if (!blog) return <NotFound />;
 
+    const readingTime = Math.ceil(blog.content.split(/\s+/).length / 200);
+
     return (
         <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
@@ -48,6 +62,12 @@ const BlogPostPage = () => {
             transition={{ duration: 0.3 }}
             className="min-h-screen bg-background font-mono"
         >
+            {/* Reading Progress Bar */}
+            <motion.div 
+                className="fixed top-0 left-0 h-1 bg-accent z-[100]"
+                style={{ width: `${scrollProgress}%` }}
+            />
+
             <article className="container-resume py-12">
                     {/* Header */}
                     <div className="mb-8 border-b border-border pb-8">
@@ -70,6 +90,10 @@ const BlogPostPage = () => {
                             <div className="flex items-center gap-2">
                                 <Tag size={16} />
                                 {blog.tags?.join(', ')}
+                            </div>
+                            <div className="flex items-center text-accent">
+                                <span className="mr-2">●</span>
+                                {readingTime} min read
                             </div>
                         </div>
                     </div>

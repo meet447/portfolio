@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-import ThemeToggle from "@/components/ThemeToggle";
 import About from "@/components/About";
 import ProjectsSection from "@/components/ProjectsSection";
 import WorkExperience from "@/components/WorkExperience";

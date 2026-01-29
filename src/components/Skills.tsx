@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const Skills = () => {
   const skillCategories = [
     {
@@ -28,19 +30,28 @@ const Skills = () => {
       
       <div className="grid gap-6 md:grid-cols-2">
         {skillCategories.map((category, index) => (
-          <div key={index} className="space-y-3">
+          <motion.div 
+            key={index} 
+            className="space-y-3"
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+          >
             <h3 className="text-job-title">{category.title}</h3>
             <div className="flex flex-wrap gap-2">
               {category.skills.map((skill, idx) => (
-                <span 
+                <motion.span 
                   key={idx}
-                  className="text-xs px-2 py-1 bg-muted rounded font-mono"
+                  className="text-xs px-2 py-1 bg-muted rounded font-mono border border-border/50"
+                  whileHover={{ scale: 1.05, backgroundColor: "var(--accent)", color: "var(--accent-foreground)" }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
                 >
                   {skill}
-                </span>
+                </motion.span>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
