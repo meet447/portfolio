@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import CommandPalette from "./components/CommandPalette";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
+import AgentLink from "./components/AgentLink";
 import Index from "./pages/Index";
 
 const Projects = lazy(() => import("./pages/Projects"));
@@ -44,6 +45,7 @@ const App = () => (
         <ThemeToggle />
         <Header />
         <AnimatedRoutes />
+        <AgentLink />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
