@@ -1,125 +1,12 @@
 import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import GetInTouchBanner from "@/components/GetInTouchBanner";
-import dashboardImage from "@/assets/project-dashboard.png";
-import chatbotImage from "@/assets/project-chatbot.png";
-import monitoringImage from "@/assets/project-monitoring.png";
-import ecommerceImage from "@/assets/project-ecommerce.png";
 import { motion } from "framer-motion";
+import projects from "@/content/projects.json";
 
 const Projects = () => {
-  const allProjects = [
-    {
-      id: 10,
-      title: "MeuxCompanion",
-      description: "A self-hosted AI companion web app with anime-style Live2D and VRM characters. Talk via text or voice with expressive facial animations, lip-synced speech, and per-sentence emotional reactions.",
-      image: "/projects/meuxcompanion.png",
-      tech: ["Rust", "TypeScript", "Live2D", "VRM", "Tauri"],
-      github: "https://github.com/meet447/MeuxCompanion",
-      live: "https://github.com/meet447/MeuxCompanion",
-      featured: true,
-      year: "2026"
-    },
-    {
-      id: 9,
-      title: "Koraku",
-      description: "Your personal AI buddy and second brain — open-source. A self-hosted assistant that remembers context across conversations and helps you organize knowledge.",
-      image: "/placeholder.svg",
-      tech: ["Python", "TypeScript", "AI", "LLM"],
-      github: "https://github.com/meet447/Koraku",
-      live: "https://github.com/meet447/Koraku",
-      featured: true,
-      year: "2026"
-    },
-    {
-      id: 8,
-      title: "SurgeDB",
-      description: "A SIMD-powered, ultra-lightweight vector database for the Edge, written in pure Rust. Features Adaptive HNSW indexing, SQ8/Binary quantization, and ACID-compliant persistence.",
-      image: "/projects/SurgeDB.png",
-      tech: ["Rust", "SIMD", "HNSW", "Vector Database", "WASM"],
-      github: "https://github.com/meet447/surgedb",
-      live: "https://github.com/meet447/surgedb",
-      featured: true,
-      year: "2026"
-    },
-    {
-      id: 1,
-      title: "Unio",
-      description: "A unified OpenAI-compatible API service where users can add keys for multiple LLM providers, enabling seamless key rotation, fallback, and centralized model management.",
-      image: monitoringImage,
-      tech: ["Python", "FastAPI", "Docker", "LLMs", "API"],
-      github: "https://github.com/meet447/unio",
-      live: "https://github.com/meet447/unio",
-      featured: true,
-      year: "2025"
-    },
-    {
-      id: 2,
-      title: "Axiomai",
-      description: "An open-source AI search engine inspired by Perplexity AI. Focuses on real-time AI-assisted search, summarization, and question-answering capabilities.",
-      image: dashboardImage,
-      tech: ["TypeScript", "Next.js", "LLMs", "PostgreSQL"],
-      github: "https://github.com/meet447/axiomai",
-      live: "https://axiom.chipling.xyz",
-      featured: true,
-      year: "2025"
-    },
-    {
-      id: 3,
-      title: "Chipling-AI",
-      description: "AI platform providing free access to stable-diffusion, video diffusion, and LLM inference. Built with Flask, enabling quick AI experimentation.",
-      image: chatbotImage,
-      tech: ["Python", "Flask", "Stable Diffusion", "LLMs", "Video Diffusion"],
-      github: "https://github.com/meet447/chipling-ai",
-      live: "https://github.com/meet447/chipling-ai",
-      featured: true,
-      year: "2024"
-    },
-    {
-      id: 4,
-      title: "Schemely",
-      description: "AI-powered tool to convert natural language and URLs into structured JSON via schema extraction, making data parsing easier.",
-      image: ecommerceImage,
-      tech: ["Python", "FastAPI", "LLMs", "Schema Extraction"],
-      github: "https://github.com/meet447/schemely",
-      live: "https://github.com/meet447/schemely",
-      featured: false,
-      year: "2025"
-    },
-    {
-      id: 5,
-      title: "FastHost",
-      description: "Self-hosted Python backend deployment platform. Deploy FastAPI or Flask apps seamlessly with Docker and container orchestration.",
-      image: monitoringImage,
-      tech: ["Python", "FastAPI", "Flask", "Docker", "Deployment"],
-      github: "https://github.com/meet447/fasthost",
-      live: "https://github.com/meet447/fasthost",
-      featured: false,
-      year: "2025"
-    },
-    {
-      id: 6,
-      title: "Dokusha",
-      description: "A manga and webtoon reader app built with React Native, inspired by Tachiyomi. Supports clean UI, library management, and smooth reading experience.",
-      image: dashboardImage,
-      tech: ["React Native", "JavaScript", "Mobile", "App Development"],
-      github: "https://github.com/meet447/dokusha",
-      live: "https://github.com/meet447/dokusha",
-      featured: false,
-      year: "2024"
-    },
-    {
-      id: 7,
-      title: "MeuxVtuber",
-      description: "Lightweight AI VTuber project with no API key requirements, capable of streaming and integrating AI characters in real-time.",
-      image: chatbotImage,
-      tech: ["Python", "LLMs", "AI", "Streaming"],
-      github: "https://github.com/meet447/meuxvtuber",
-      live: "https://github.com/meet447/meuxvtuber",
-      featured: false,
-      year: "2023"
-    }
-  ];
+  const allProjects = projects;
+
 
   const featuredProjects = allProjects.filter(project => project.featured);
   const otherProjects = allProjects.filter(project => !project.featured);
@@ -138,7 +25,7 @@ const Projects = () => {
             <h2 className="text-section-title"># FEATURED PROJECTS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard key={project.title} project={project} />
               ))}
             </div>
           </section>
@@ -148,7 +35,7 @@ const Projects = () => {
             <h2 className="text-section-title"># OTHER PROJECTS</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} compact />
+                <ProjectCard key={project.title} project={project} compact />
               ))}
             </div>
           </section>
@@ -162,10 +49,9 @@ const Projects = () => {
 
 interface ProjectCardProps {
   project: {
-    id: number;
     title: string;
     description: string;
-    image: string;
+    image?: string;
     tech: string[];
     github: string;
     live: string;

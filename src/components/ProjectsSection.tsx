@@ -1,68 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
-import dashboardImage from "@/assets/project-dashboard.png";
-import chatbotImage from "@/assets/project-chatbot.png";
-import monitoringImage from "@/assets/project-monitoring.png";
-import ecommerceImage from "@/assets/project-ecommerce.png";
+import projects from "@/content/projects.json";
 
 const ProjectsSection = () => {
-  const featuredProjects = [
-    {
-      id: 6,
-      title: "MeuxCompanion",
-      description: "A self-hosted AI companion web app with anime-style Live2D and VRM characters. Talk via text or voice with expressive facial animations, lip-synced speech, and per-sentence emotional reactions.",
-      image: "/projects/meuxcompanion.png",
-      tech: ["Rust", "TypeScript", "Live2D", "VRM", "Tauri"],
-      github: "https://github.com/meet447/MeuxCompanion",
-      live: "https://github.com/meet447/MeuxCompanion"
-    },
-    {
-      id: 5,
-      title: "Koraku",
-      description: "Your personal AI buddy and second brain — open-source. A self-hosted assistant that remembers context across conversations and helps you organize knowledge.",
-      image: "/placeholder.svg",
-      tech: ["Python", "TypeScript", "AI", "LLM"],
-      github: "https://github.com/meet447/Koraku",
-      live: "https://github.com/meet447/Koraku"
-    },
-    {
-      id: 4,
-      title: "SurgeDB",
-      description: "A SIMD-powered, ultra-lightweight vector database for the Edge. Optimized for Apple Silicon and modern x86 hardware, indexing 100k vectors with just 39MB RAM.",
-      image: "/projects/SurgeDB.png",
-      tech: ["Rust", "SIMD", "HNSW", "Vector Database"],
-      github: "https://github.com/meet447/surgedb",
-      live: "https://github.com/meet447/surgedb"
-    },
-    {
-      id: 1,
-      title: "Chipling",
-      description: "The Visual Discovery Engine. A digital ocean that uses vector embeddings to let you search, curate, and discover inspiration by concept rather than keywords.",
-      image: "/projects/chipling.png",
-      tech: ["Next.js", "Supabase", "PostgreSQL", "FastAPI", "Vector Embeddings"], // Updated based on your actual stack
-      github: "https://chipling.xyz", // Double check this link, looks like a placeholder?
-      live: "https://chipling.xyz"
-    },
-    {
-      id: 2,
-      title: "Unio",
-      description: "A unified API service for developers who use multiple LLM providers. The goal is to make AI development easier, cheaper, and more reliable.",
-      image: "/projects/unio.png",
-      tech: ["Python", "FastAPI", "Docker", "React", "Supabase", "Redis"],
-      github: "https://github.com/meet447/Unio",
-      live: "https://unio.chipling.xyz"
-    },
-    {
-      id: 3,
-      title: "Axiom",
-      description: "Open Source AI search engine similar Perplexity AI but with ai agents and more features.",
-      image: "/projects/axiom.png",
-      tech: ["Next JS", "Node.js", "Fast API", "Supabase", "Redis"],
-      github: "https://github.com/meet447/Axiomai",
-      live: "https://axiom.chipling.xyz"
-    }
-  ];
+  const featuredProjects = projects.filter((p) => p.featured);
 
   return (
     <section id="projects" className="container-resume section-spacing">
@@ -77,7 +19,7 @@ const ProjectsSection = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {featuredProjects.map((project) => (
-          <div key={project.id} className="group border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
+          <div key={project.title} className="group border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
             {/* Project Thumbnail */}
             <div className="relative overflow-hidden">
               <img

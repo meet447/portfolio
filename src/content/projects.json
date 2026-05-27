@@ -1,0 +1,98 @@
+[
+  {
+    "title": "MeuxCompanion",
+    "description": "A self-hosted AI companion web app with anime-style Live2D and VRM characters. Talk via text or voice with expressive facial animations, lip-synced speech, and per-sentence emotional reactions.",
+    "image": "/projects/meuxcompanion.png",
+    "tech": ["Rust", "TypeScript", "Live2D", "VRM", "Tauri"],
+    "github": "https://github.com/meet447/MeuxCompanion",
+    "live": "https://github.com/meet447/MeuxCompanion",
+    "year": "2026",
+    "featured": true
+  },
+  {
+    "title": "Koraku",
+    "description": "Your personal AI buddy and second brain — open-source. A self-hosted assistant that remembers context across conversations and helps you organize knowledge.",
+    "image": "/placeholder.svg",
+    "tech": ["Python", "TypeScript", "AI", "LLM"],
+    "github": "https://github.com/meet447/Koraku",
+    "live": "https://github.com/meet447/Koraku",
+    "year": "2026",
+    "featured": true
+  },
+  {
+    "title": "SurgeDB",
+    "description": "A SIMD-powered, ultra-lightweight vector database for the Edge, written in pure Rust. Features Adaptive HNSW indexing, SQ8/Binary quantization, and ACID-compliant persistence. Indexes 100k vectors with just 39MB RAM.",
+    "image": "/projects/SurgeDB.png",
+    "tech": ["Rust", "SIMD", "HNSW", "Vector Database", "WASM"],
+    "github": "https://github.com/meet447/surgedb",
+    "live": "https://github.com/meet447/surgedb",
+    "year": "2026",
+    "featured": true
+  },
+  {
+    "title": "Chipling",
+    "description": "The Visual Discovery Engine. A digital ocean that uses vector embeddings to let you search, curate, and discover inspiration by concept rather than keywords.",
+    "image": "/projects/chipling.png",
+    "tech": ["Next.js", "Supabase", "PostgreSQL", "FastAPI", "Vector Embeddings"],
+    "github": "https://chipling.xyz",
+    "live": "https://chipling.xyz",
+    "year": "2024",
+    "featured": true
+  },
+  {
+    "title": "Unio",
+    "description": "A unified OpenAI-compatible API service where users can add keys for multiple LLM providers, enabling seamless key rotation, fallback, and centralized model management.",
+    "image": "/projects/unio.png",
+    "tech": ["Python", "FastAPI", "Docker", "React", "Supabase", "Redis"],
+    "github": "https://github.com/meet447/Unio",
+    "live": "https://unio.chipling.xyz",
+    "year": "2025",
+    "featured": true
+  },
+  {
+    "title": "Axiom",
+    "description": "Open-source AI search engine inspired by Perplexity AI, with AI agents and additional features for real-time search, summarization, and question-answering.",
+    "image": "/projects/axiom.png",
+    "tech": ["Next.js", "Node.js", "FastAPI", "Supabase", "Redis"],
+    "github": "https://github.com/meet447/Axiomai",
+    "live": "https://axiom.chipling.xyz",
+    "year": "2025",
+    "featured": true
+  },
+  {
+    "title": "Schemely",
+    "description": "AI-powered tool to convert natural language and URLs into structured JSON via schema extraction, making data parsing easier.",
+    "tech": ["Python", "FastAPI", "LLMs", "Schema Extraction"],
+    "github": "https://github.com/meet447/schemely",
+    "live": "https://github.com/meet447/schemely",
+    "year": "2025",
+    "featured": false
+  },
+  {
+    "title": "FastHost",
+    "description": "Self-hosted Python backend deployment platform. Deploy FastAPI or Flask apps seamlessly with Docker and container orchestration.",
+    "tech": ["Python", "FastAPI", "Flask", "Docker", "Deployment"],
+    "github": "https://github.com/meet447/fasthost",
+    "live": "https://github.com/meet447/fasthost",
+    "year": "2025",
+    "featured": false
+  },
+  {
+    "title": "Dokusha",
+    "description": "A manga and webtoon reader app built with React Native, inspired by Tachiyomi. Supports clean UI, library management, and smooth reading experience.",
+    "tech": ["React Native", "JavaScript", "Mobile"],
+    "github": "https://github.com/meet447/dokusha",
+    "live": "https://github.com/meet447/dokusha",
+    "year": "2024",
+    "featured": false
+  },
+  {
+    "title": "MeuxVtuber",
+    "description": "Lightweight AI VTuber project with no API key requirements, capable of streaming and integrating AI characters in real-time.",
+    "tech": ["Python", "LLMs", "AI", "Streaming"],
+    "github": "https://github.com/meet447/meuxvtuber",
+    "live": "https://github.com/meet447/meuxvtuber",
+    "year": "2023",
+    "featured": false
+  }
+]

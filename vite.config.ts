@@ -7,9 +7,40 @@ import { componentTagger } from "lovable-tagger";
 
 const SITE_URL = "https://meetsonawane.com";
 
+interface ProjectEntry {
+  title: string;
+  description: string;
+  image?: string;
+  tech: string[];
+  github: string;
+  live: string;
+  year: string;
+  featured: boolean;
+}
+
+function renderProjectsMarkdown(projects: ProjectEntry[]): string {
+  const byYear = [...projects].sort((a, b) => b.year.localeCompare(a.year));
+  const body = byYear
+    .map((p) => {
+      const lines = [
+        `## ${p.title} (${p.year})`,
+        ``,
+        p.description,
+        ``,
+        `- Stack: ${p.tech.join(", ")}`,
+        `- GitHub: ${p.github}`,
+      ];
+      if (p.live && p.live !== p.github) lines.push(`- Live: ${p.live}`);
+      return lines.join("\n");
+    })
+    .join("\n\n");
+  return `# Projects\n\n${body}\n`;
+}
+
 function llmRoutesPlugin(): Plugin {
   const blogsDir = path.resolve(__dirname, "src/content/blogs");
   const llmDir = path.resolve(__dirname, "src/content/llm");
+  const projectsFile = path.resolve(__dirname, "src/content/projects.json");
 
   const readDirSafe = (dir: string) => {
     try { return readdirSync(dir); } catch { return []; }
@@ -41,6 +72,13 @@ function llmRoutesPlugin(): Plugin {
           })
           .join("\n") + "\n";
       this.emitFile({ type: "asset", fileName: "blog.md", source: blogIndex });
+
+      const projects: ProjectEntry[] = JSON.parse(readFileSync(projectsFile, "utf8"));
+      this.emitFile({
+        type: "asset",
+        fileName: "projects.md",
+        source: renderProjectsMarkdown(projects),
+      });
 
       for (const file of readDirSafe(llmDir).filter((f) => f.endsWith(".md"))) {
         const raw = readFileSync(path.join(llmDir, file), "utf8");
