@@ -12,12 +12,7 @@ import NotFound from './NotFound';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
 
-const BlogPostPage = () => {
-    const { slug } = useParams<{ slug: string }>();
-    const [blog, setBlog] = useState<BlogPost | null>(null);
-    const [moreBlogs, setMoreBlogs] = useState<BlogPost[]>([]);
-    const [loading, setLoading] = useState(true);
-    const { resolvedTheme } = useTheme();
+const ReadingProgressBar = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
 
     useEffect(() => {
@@ -30,6 +25,21 @@ const BlogPostPage = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    return (
+        <motion.div
+            className="fixed top-0 left-0 h-1 bg-accent z-[100]"
+            style={{ width: `${scrollProgress}%` }}
+        />
+    );
+};
+
+const BlogPostPage = () => {
+    const { slug } = useParams<{ slug: string }>();
+    const [blog, setBlog] = useState<BlogPost | null>(null);
+    const [moreBlogs, setMoreBlogs] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(true);
+    const { resolvedTheme } = useTheme();
 
     useEffect(() => {
         if (slug) {
@@ -62,11 +72,7 @@ const BlogPostPage = () => {
             transition={{ duration: 0.3 }}
             className="min-h-screen bg-background font-mono"
         >
-            {/* Reading Progress Bar */}
-            <motion.div 
-                className="fixed top-0 left-0 h-1 bg-accent z-[100]"
-                style={{ width: `${scrollProgress}%` }}
-            />
+            <ReadingProgressBar />
 
             <article className="container-resume py-12">
                     {/* Header */}

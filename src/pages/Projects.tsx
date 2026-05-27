@@ -10,6 +10,28 @@ import { motion } from "framer-motion";
 const Projects = () => {
   const allProjects = [
     {
+      id: 10,
+      title: "MeuxCompanion",
+      description: "A self-hosted AI companion web app with anime-style Live2D and VRM characters. Talk via text or voice with expressive facial animations, lip-synced speech, and per-sentence emotional reactions.",
+      image: "/projects/meuxcompanion.png",
+      tech: ["Rust", "TypeScript", "Live2D", "VRM", "Tauri"],
+      github: "https://github.com/meet447/MeuxCompanion",
+      live: "https://github.com/meet447/MeuxCompanion",
+      featured: true,
+      year: "2026"
+    },
+    {
+      id: 9,
+      title: "Koraku",
+      description: "Your personal AI buddy and second brain — open-source. A self-hosted assistant that remembers context across conversations and helps you organize knowledge.",
+      image: "/placeholder.svg",
+      tech: ["Python", "TypeScript", "AI", "LLM"],
+      github: "https://github.com/meet447/Koraku",
+      live: "https://github.com/meet447/Koraku",
+      featured: true,
+      year: "2026"
+    },
+    {
       id: 8,
       title: "SurgeDB",
       description: "A SIMD-powered, ultra-lightweight vector database for the Edge, written in pure Rust. Features Adaptive HNSW indexing, SQ8/Binary quantization, and ACID-compliant persistence.",
