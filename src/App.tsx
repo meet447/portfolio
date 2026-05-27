@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,22 +9,25 @@ import CommandPalette from "./components/CommandPalette";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
 import Index from "./pages/Index";
-import Projects from "./pages/Projects";
-import NotFound from "./pages/NotFound";
-import BlogList from "./pages/BlogList";
-import BlogPostPage from "./pages/BlogPost";
+
+const Projects = lazy(() => import("./pages/Projects"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BlogList = lazy(() => import("./pages/BlogList"));
+const BlogPostPage = lazy(() => import("./pages/BlogPost"));
 
 const AnimatedRoutes = () => {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Index />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/blog" element={<BlogList />} />
-        <Route path="/blog/:slug" element={<BlogPostPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-sm text-muted-foreground">Loading…</div>}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Index />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </AnimatePresence>
   );
 };

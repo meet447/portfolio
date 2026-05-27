@@ -19,4 +19,20 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("@radix-ui")) return "radix";
+            if (id.includes("framer-motion")) return "framer";
+            if (id.includes("react-router")) return "router";
+            if (id.includes("react-syntax-highlighter") || id.includes("refractor")) return "syntax";
+            if (id.includes("react-dom") || id.includes("scheduler")) return "react-dom";
+            if (id.includes("/react/")) return "react";
+          }
+        },
+      },
+    },
+  },
 }));

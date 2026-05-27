@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { BlogPost, getAllBlogs, getBlogBySlug } from '@/lib/blogUtils';
 import Markdown from 'react-markdown';
@@ -7,10 +7,11 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { ArrowLeft, Calendar, Tag, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Mermaid from '@/components/Mermaid';
 import NotFound from './NotFound';
 import { useTheme } from 'next-themes';
 import { motion } from 'framer-motion';
+
+const Mermaid = lazy(() => import('@/components/Mermaid'));
 
 const ReadingProgressBar = () => {
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -120,7 +121,11 @@ const BlogPostPage = () => {
                                     const match = /language-(\w+)/.exec(className || '');
                                     
                                     if (match && match[1] === 'mermaid') {
-                                        return <Mermaid chart={String(children).replace(/\n$/, '')} />;
+                                        return (
+                                            <Suspense fallback={<div className="my-8 p-6 bg-muted/20 rounded-lg text-sm text-muted-foreground">Loading diagram…</div>}>
+                                                <Mermaid chart={String(children).replace(/\n$/, '')} />
+                                            </Suspense>
+                                        );
                                     }
 
                                     return match ? (
