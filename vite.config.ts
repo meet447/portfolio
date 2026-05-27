@@ -28,8 +28,6 @@ export default defineConfig(({ mode }) => ({
             if (id.includes("framer-motion")) return "framer";
             if (id.includes("react-router")) return "router";
             if (id.includes("react-syntax-highlighter") || id.includes("refractor")) return "syntax";
-            if (id.includes("react-dom") || id.includes("scheduler")) return "react-dom";
-            if (id.includes("/react/")) return "react";
           }
         },
       },
