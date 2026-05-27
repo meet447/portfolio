@@ -72,7 +72,7 @@ const Header = () => {
                 {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
               </Button>
             </div>
-            <a href="/resume.pdf" target="_blank">
+            <a href="/resume/newresume.pdf" download target="_blank">
               <Button variant="outline" size="sm" className="font-mono h-9 px-5 text-xs">
                 <FileText size={14} className="mr-2" />
                 Download CV
