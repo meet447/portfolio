@@ -47,7 +47,7 @@
     "github": "https://github.com/meet447/Unio",
     "live": "https://unio.chipling.xyz",
     "year": "2025",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Axiom",
@@ -57,7 +57,7 @@
     "github": "https://github.com/meet447/Axiomai",
     "live": "https://axiom.chipling.xyz",
     "year": "2025",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Schemely",
