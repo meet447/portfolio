@@ -65,7 +65,17 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
     <div className="group border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
       {/* Project Thumbnail */}
       <div className="relative overflow-hidden">
-       
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.title}
+            width="800"
+            height="384"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        )}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
         <div className="absolute top-3 right-3">
           <span className="text-xs px-2 py-1 bg-black/70 text-white rounded font-mono">

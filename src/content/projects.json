@@ -12,10 +12,10 @@
   {
     "title": "Koraku",
     "description": "Your personal AI buddy and second brain — open-source. A self-hosted assistant that remembers context across conversations and helps you organize knowledge.",
-    "image": "/placeholder.svg",
+    "image": "/projects/koraku.png",
     "tech": ["Python", "TypeScript", "AI", "LLM"],
     "github": "https://github.com/meet447/Koraku",
-    "live": "https://github.com/meet447/Koraku",
+    "live": "https://koraku.chipling.xyz",
     "year": "2026",
     "featured": true
   },
