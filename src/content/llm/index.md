@@ -4,7 +4,7 @@ Full Stack Software Engineer with 2+ years of experience building scalable web
 applications and backend systems. Specializes in Python, React, and cloud
 architecture, with a strong focus on efficient, maintainable solutions.
 
-- Website: https://meetsonawane.com
+- Website: https://meetsonawane.vercel.app
 - GitHub: https://github.com/meet447
 - Email: meet.sonawane2015@gmail.com
 

@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio site for [meetsonawane.com](https://meetsonawane.com).
+Personal portfolio site for [meetsonawane.vercel.app](https://meetsonawane.vercel.app).
 
 Built with React, Vite, TypeScript, Tailwind CSS, and shadcn/ui. Projects and blog posts are driven by local content files — no CMS.
 

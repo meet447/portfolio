@@ -5,7 +5,7 @@ import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 import { componentTagger } from "lovable-tagger";
 
-const SITE_URL = "https://meetsonawane.com";
+const SITE_URL = "https://meetsonawane.vercel.app";
 
 interface ProjectEntry {
   title: string;
