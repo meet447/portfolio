@@ -32,7 +32,4 @@ export const getAllBlogs = async (): Promise<BlogPost[]> => {
     return blogs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
-export const getBlogBySlug = async (slug: string): Promise<BlogPost | null> => {
-    const blogs = await getAllBlogs();
-    return blogs.find((blog) => blog.slug === slug) || null;
-};
+

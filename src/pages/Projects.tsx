@@ -1,4 +1,3 @@
-import React from "react";
 import { ExternalLink, Github } from "lucide-react";
 import GetInTouchBanner from "@/components/GetInTouchBanner";
 import { motion } from "framer-motion";
