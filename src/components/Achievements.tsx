@@ -7,8 +7,8 @@ const Achievements = () => {
             organization: "Govt of India",
             date: "Dec 2024",
             description: [
-                "Devloped a software for madhyapradesh police for identifying the actual host of a website or domain",
-                "Created and implented an solution for detcting the true host ip even if the site is protected by CDNs or security services.",
+                "Developed a software for Madhya Pradesh police for identifying the actual host of a website or domain",
+                "Created and implemented a solution for detecting the true host IP even if the site is protected by CDNs or security services.",
                 "Our software stood out for its ability to uncover the true origin host, showcasing technical sophistication and real-world applications in cybersecurity"
             ]
         }

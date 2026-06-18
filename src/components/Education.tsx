@@ -19,7 +19,7 @@ const Education = () => {
         <ul className="space-y-2">
           <li className="text-body flex">
             <span className="text-muted-foreground mr-3 flex-shrink-0">•</span>
-            <span>Relevant Coursework: Data Structures & Algorithms, Database Management Sysytem, Microcontrollers, Digital System Design, Linux, Digital Cryptography</span>
+            <span>Relevant Coursework: Data Structures & Algorithms, Database Management System, Microcontrollers, Digital System Design, Linux, Digital Cryptography</span>
           </li>
         </ul>
       </div>

@@ -2,10 +2,11 @@ import { Bot } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 const markdownPathFor = (pathname: string): string => {
-  if (pathname === "/" || pathname === "") return "/index.md";
-  if (pathname === "/projects") return "/projects.md";
-  if (pathname === "/blog") return "/blog.md";
-  if (pathname.startsWith("/blog/")) return `${pathname.replace(/\/$/, "")}.md`;
+  const cleanPath = pathname.replace(/\/$/, "");
+  if (cleanPath === "" || cleanPath === "/") return "/index.md";
+  if (cleanPath === "/projects") return "/projects.md";
+  if (cleanPath === "/blog") return "/blog.md";
+  if (cleanPath.startsWith("/blog/")) return `${cleanPath}.md`;
   return "/llms.txt";
 };
 

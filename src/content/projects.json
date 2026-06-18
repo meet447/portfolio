@@ -34,7 +34,7 @@
     "description": "The Visual Discovery Engine. A digital ocean that uses vector embeddings to let you search, curate, and discover inspiration by concept rather than keywords.",
     "image": "/projects/chipling.png",
     "tech": ["Next.js", "Supabase", "PostgreSQL", "FastAPI", "Vector Embeddings"],
-    "github": "https://chipling.xyz",
+    "github": "https://github.com/meet447/chipling",
     "live": "https://chipling.xyz",
     "year": "2024",
     "featured": true
@@ -62,6 +62,7 @@
   {
     "title": "Schemely",
     "description": "AI-powered tool to convert natural language and URLs into structured JSON via schema extraction, making data parsing easier.",
+    "image": "/projects/schemely.png",
     "tech": ["Python", "FastAPI", "LLMs", "Schema Extraction"],
     "github": "https://github.com/meet447/schemely",
     "live": "https://github.com/meet447/schemely",

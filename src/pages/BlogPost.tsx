@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { BlogPost, getAllBlogs, getBlogBySlug } from '@/lib/blogUtils';
+import { BlogPost, getAllBlogs } from '@/lib/blogUtils';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -44,17 +44,15 @@ const BlogPostPage = () => {
 
     useEffect(() => {
         if (slug) {
-            // Scroll to top when slug changes
             window.scrollTo(0, 0);
 
-            getBlogBySlug(slug).then((data) => {
-                setBlog(data);
-                setLoading(false);
-            });
-
             getAllBlogs().then((all) => {
+                const current = all.find(b => b.slug === slug) || null;
+                setBlog(current);
+                setLoading(false);
+
                 const others = all.filter(b => b.slug !== slug);
-                const shuffled = others.sort(() => 0.5 - Math.random());
+                const shuffled = others.sort(() => Math.random() - 0.5);
                 setMoreBlogs(shuffled.slice(0, 3));
             });
         }

@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { ThemeProvider } from "next-themes";
 import CommandPalette from "./components/CommandPalette";
 import Header from "./components/Header";
 import ThemeToggle from "./components/ThemeToggle";
@@ -38,15 +39,17 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <CommandPalette />
-        <ThemeToggle />
-        <Header />
-        <AnimatedRoutes />
-        <AgentLink />
-      </BrowserRouter>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <CommandPalette />
+          <ThemeToggle />
+          <Header />
+          <AnimatedRoutes />
+          <AgentLink />
+        </BrowserRouter>
+      </ThemeProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

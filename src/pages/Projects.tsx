@@ -85,7 +85,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
       </div>
       
       {/* Project Info */}
-      <div className={`p-${compact ? '4' : '6'}`}>
+      <div className={compact ? "p-4" : "p-6"}>
         <h3 className="text-job-title mb-2">{project.title}</h3>
         <p className={`text-body mb-4 ${compact ? 'line-clamp-2' : 'line-clamp-3'}`}>
           {project.description}
@@ -93,9 +93,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
         
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.slice(0, compact ? 3 : 6).map((tech, idx) => (
-            <span 
-              key={idx}
+          {project.tech.slice(0, compact ? 3 : 6).map((tech) => (
+            <span
+              key={tech}
               className="text-xs px-2 py-1 bg-muted rounded font-mono"
             >
               {tech}
