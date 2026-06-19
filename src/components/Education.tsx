@@ -1,27 +1,34 @@
+import SectionTitle from "./SectionTitle";
+
 const Education = () => {
   return (
-    <section className="container-resume section-spacing">
-      <h2 className="text-section-title"># EDUCATION</h2>
-      
-      <div className="job-spacing">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-          <div className="flex-1">
-            <h3 className="text-job-title">Bachelor of Engineering in Electronics & Telecommunication</h3>
-            <p className="text-company">
-              Bharati Vidyapeeth College of Engineering <span className="text-muted-foreground">(Navi Mumbai, Maharashtra)</span>
-            </p>
-          </div>
-          <div className="text-date mt-1 sm:mt-0">
-            2023 - 2027
-          </div>
-        </div>
+    <section className="container-site section-spacing">
+      <div className="content-column">
+        <SectionTitle title="Education" />
 
-        <ul className="space-y-2">
-          <li className="text-body flex">
-            <span className="text-muted-foreground mr-3 flex-shrink-0">•</span>
-            <span>Relevant Coursework: Data Structures & Algorithms, Database Management System, Microcontrollers, Digital System Design, Linux, Digital Cryptography</span>
-          </li>
-        </ul>
+        <div className="relative pl-7">
+          <div className="absolute left-[9px] top-2 bottom-2 w-px bg-border" aria-hidden />
+          <div className="absolute left-[4px] top-1.5 h-2.5 w-2.5 rounded-full bg-muted-foreground ring-4 ring-background" aria-hidden />
+
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
+            <div>
+              <h3 className="text-display text-base font-semibold">
+                Bachelor of Engineering in Electronics & Telecommunication
+              </h3>
+              <p className="text-sm font-mono text-muted-foreground mt-1">
+                Bharati Vidyapeeth College of Engineering
+              </p>
+              <p className="text-xs font-mono text-muted-foreground/70 mt-0.5">
+                Navi Mumbai, Maharashtra
+              </p>
+            </div>
+            <p className="text-xs font-mono text-muted-foreground shrink-0">2023 - 2027</p>
+          </div>
+
+          <p className="text-body-prose">
+            Relevant Coursework: Data Structures & Algorithms, Database Management System, Microcontrollers, Digital System Design, Linux, Digital Cryptography
+          </p>
+        </div>
       </div>
     </section>
   );

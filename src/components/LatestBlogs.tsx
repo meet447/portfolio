@@ -1,56 +1,62 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { BlogPost, getAllBlogs } from '@/lib/blogUtils';
-import { Calendar, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { BlogPost, getAllBlogs } from "@/lib/blogUtils";
+import { ArrowRight } from "lucide-react";
+import SectionTitle from "./SectionTitle";
 
 const LatestBlogs = () => {
-    const [blogs, setBlogs] = useState<BlogPost[]>([]);
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
 
-    useEffect(() => {
-        getAllBlogs().then(data => setBlogs(data.slice(0, 3)));
-    }, []);
+  useEffect(() => {
+    getAllBlogs().then((data) => setBlogs(data.slice(0, 3)));
+  }, []);
 
-    if (blogs.length === 0) return null;
+  if (blogs.length === 0) return null;
 
-    return (
-        <section className="container-resume section-spacing">
-            <div className="flex items-center justify-between mb-8">
-                <h2 className="text-section-title"># TECHNICAL NOTES</h2>
-                <Link to="/blog">
-                    <Button variant="outline" className="text-sm font-mono">
-                        View All Notes <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                </Link>
-            </div>
+  return (
+    <section className="container-site section-spacing">
+      <div className="content-column">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 sm:mb-10">
+          <SectionTitle title="Notes" className="mb-0" />
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground transition-colors hover:text-foreground shrink-0 pb-1"
+          >
+            View All Notes
+            <ArrowRight size={14} />
+          </Link>
+        </div>
 
-            <div className="grid gap-6 md:grid-cols-3">
-                {blogs.map((blog) => (
-                    <Link to={`/blog/${blog.slug}`} key={blog.slug} className="group h-full">
-                        <article className="border border-border p-6 rounded-lg h-full hover:bg-muted/30 transition-colors flex flex-col">
-                            <div className="flex items-center text-xs text-muted-foreground mb-3">
-                                <Calendar size={12} className="mr-2" />
-                                {blog.date}
-                            </div>
-                            <h3 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                                {blog.title}
-                            </h3>
-                            <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-grow">
-                                {blog.description}
-                            </p>
-                            <div className="flex flex-wrap gap-2 mt-auto">
-                                {blog.tags?.slice(0, 2).map((tag) => (
-                                    <span key={tag} className="text-xs px-2 py-1 bg-muted rounded font-mono">
-                                        #{tag}
-                                    </span>
-                                ))}
-                            </div>
-                        </article>
-                    </Link>
-                ))}
-            </div>
-        </section>
-    );
+        <div className="space-y-6">
+          {blogs.map((blog) => (
+            <Link to={`/blog/${blog.slug}`} key={blog.slug} className="block group">
+              <article className="border-b border-border/40 pb-6 transition-colors hover:border-border">
+                <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-2">
+                  <h3 className="text-pixel text-lg sm:text-xl text-foreground group-hover:text-foreground/80 transition-colors normal-case">
+                    {blog.title}
+                  </h3>
+                  <span className="text-[11px] font-mono text-muted-foreground">{blog.date}</span>
+                </div>
+                <p className="text-body-prose line-clamp-2">{blog.description}</p>
+                {blog.tags && blog.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {blog.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[10px] font-mono text-muted-foreground border border-border/40 rounded px-1.5 py-0.5"
+                      >
+                        [{tag}]
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default LatestBlogs;

@@ -7,8 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "next-themes";
 import CommandPalette from "./components/CommandPalette";
-import Header from "./components/Header";
-import ThemeToggle from "./components/ThemeToggle";
+import NavBar from "./components/NavBar";
 import AgentLink from "./components/AgentLink";
 import Index from "./pages/Index";
 
@@ -21,7 +20,7 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-sm text-muted-foreground">Loading…</div>}>
+      <Suspense fallback={<div className="min-h-screen flex items-center justify-center font-mono text-sm text-muted-foreground pt-20">Loading…</div>}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Index />} />
           <Route path="/projects" element={<Projects />} />
@@ -39,13 +38,12 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <NavBar />
           <CommandPalette />
-          <ThemeToggle />
-          <Header />
           <AnimatedRoutes />
           <AgentLink />
         </BrowserRouter>

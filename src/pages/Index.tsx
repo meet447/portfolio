@@ -12,21 +12,19 @@ const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const Index = () => {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="min-h-screen bg-background"
     >
       <main>
-        <motion.div {...fadeInUp}>
-          <About />
-        </motion.div>
+        <About />
         <motion.div {...fadeInUp}>
           <WorkExperience />
         </motion.div>
@@ -52,6 +50,5 @@ const Index = () => {
     </motion.div>
   );
 };
-
 
 export default Index;

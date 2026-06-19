@@ -1,200 +1,193 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { BlogPost, getAllBlogs } from '@/lib/blogUtils';
-import Markdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { ArrowLeft, Calendar, Tag, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import NotFound from './NotFound';
-import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import { lazy, Suspense, useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+import { BlogPost, getAllBlogs } from "@/lib/blogUtils";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus, vs } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import NotFound from "./NotFound";
+import { useTheme } from "next-themes";
+import { motion } from "framer-motion";
 
-const Mermaid = lazy(() => import('@/components/Mermaid'));
+const Mermaid = lazy(() => import("@/components/Mermaid"));
 
 const ReadingProgressBar = () => {
-    const [scrollProgress, setScrollProgress] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            setScrollProgress(progress);
-        };
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+    };
 
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return (
-        <motion.div
-            className="fixed top-0 left-0 h-1 bg-accent z-[100]"
-            style={{ width: `${scrollProgress}%` }}
-        />
-    );
+  return (
+    <motion.div
+      className="fixed top-0 left-0 h-0.5 bg-foreground z-[100]"
+      style={{ width: `${scrollProgress}%` }}
+    />
+  );
 };
 
 const BlogPostPage = () => {
-    const { slug } = useParams<{ slug: string }>();
-    const [blog, setBlog] = useState<BlogPost | null>(null);
-    const [moreBlogs, setMoreBlogs] = useState<BlogPost[]>([]);
-    const [loading, setLoading] = useState(true);
-    const { resolvedTheme } = useTheme();
+  const { slug } = useParams<{ slug: string }>();
+  const [blog, setBlog] = useState<BlogPost | null>(null);
+  const [moreBlogs, setMoreBlogs] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+  const { resolvedTheme } = useTheme();
 
-    useEffect(() => {
-        if (slug) {
-            window.scrollTo(0, 0);
+  useEffect(() => {
+    if (slug) {
+      window.scrollTo(0, 0);
 
-            getAllBlogs().then((all) => {
-                const current = all.find(b => b.slug === slug) || null;
-                setBlog(current);
-                setLoading(false);
+      getAllBlogs().then((all) => {
+        const current = all.find((b) => b.slug === slug) || null;
+        setBlog(current);
+        setLoading(false);
 
-                const others = all.filter(b => b.slug !== slug);
-                const shuffled = others.sort(() => Math.random() - 0.5);
-                setMoreBlogs(shuffled.slice(0, 3));
-            });
-        }
-    }, [slug]);
+        const others = all.filter((b) => b.slug !== slug);
+        const shuffled = others.sort(() => Math.random() - 0.5);
+        setMoreBlogs(shuffled.slice(0, 3));
+      });
+    }
+  }, [slug]);
 
-    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-    if (!blog) return <NotFound />;
-
-    const readingTime = Math.ceil(blog.content.split(/\s+/).length / 200);
-
+  if (loading) {
     return (
-        <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.3 }}
-            className="min-h-screen bg-background font-mono"
-        >
-            <ReadingProgressBar />
-
-            <article className="container-resume py-12">
-                    {/* Header */}
-                    <div className="mb-8 border-b border-border pb-8">
-                        <Link to="/blog">
-                            <Button variant="outline" size="sm" className="font-mono mb-6">
-                                <ArrowLeft size={16} className="mr-2" />
-                                Back to Notes
-                            </Button>
-                        </Link>
-
-                        <h1 className="text-3xl sm:text-4xl font-bold mb-4 leading-tight">
-                            {blog.title}
-                        </h1>
-
-                        <div className="flex flex-wrap items-center gap-6 text-muted-foreground font-mono text-sm">
-                            <div className="flex items-center">
-                                <Calendar size={16} className="mr-2" />
-                                {blog.date}
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Tag size={16} />
-                                {blog.tags?.join(', ')}
-                            </div>
-                            <div className="flex items-center text-accent">
-                                <span className="mr-2">●</span>
-                                {readingTime} min read
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="prose dark:prose-invert max-w-none 
-            prose-headings:font-bold prose-headings:tracking-tight
-            prose-p:leading-relaxed
-            prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-            prose-code:text-accent prose-code:bg-muted/50 prose-code:px-1 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-transparent prose-pre:p-0 prose-pre:border-none
-          ">
-                        <Markdown
-                            remarkPlugins={[remarkGfm]}
-                            components={{
-                                code(props) {
-                                    const { children, className, node, ...rest } = props;
-                                    const match = /language-(\w+)/.exec(className || '');
-                                    
-                                    if (match && match[1] === 'mermaid') {
-                                        return (
-                                            <Suspense fallback={<div className="my-8 p-6 bg-muted/20 rounded-lg text-sm text-muted-foreground">Loading diagram…</div>}>
-                                                <Mermaid chart={String(children).replace(/\n$/, '')} />
-                                            </Suspense>
-                                        );
-                                    }
-
-                                    return match ? (
-                                        <div className="not-prose">
-                                            <SyntaxHighlighter
-                                                PreTag="div"
-                                                children={String(children).replace(/\n$/, '')}
-                                                language={match[1]}
-                                                style={resolvedTheme === 'dark' ? vscDarkPlus : vs}
-                                                customStyle={{
-                                                    margin: '1.5rem 0',
-                                                    borderRadius: '0.5rem',
-                                                    fontSize: '0.875rem',
-                                                    backgroundColor: resolvedTheme === 'dark' ? '#1e1e1e' : '#f8f8f8',
-                                                    padding: '1.5rem',
-                                                }}
-                                            />
-                                        </div>
-                                    ) : (
-                                        <code {...rest} className={className}>
-                                            {children}
-                                        </code>
-                                    );
-                                }
-                            }}
-                        >
-                            {blog.content}
-                        </Markdown>
-                    </div>
-                </article>
-
-                {/* Explore More Section */}
-                {moreBlogs.length > 0 && (
-                    <div className="container-resume border-t border-border py-12 mt-12">
-                        <div className="flex items-center justify-between mb-8">
-                            <h2 className="text-xl font-bold font-mono tracking-tight text-foreground"># EXPLORE MORE</h2>
-                            <Link to="/blog">
-                                <Button variant="ghost" size="sm" className="font-mono text-xs">
-                                    View All <ArrowRight size={14} className="ml-2" />
-                                </Button>
-                            </Link>
-                        </div>
-                        <div className="grid gap-6 md:grid-cols-3">
-                            {moreBlogs.map((item) => (
-                                <Link to={`/blog/${item.slug}`} key={item.slug} className="group h-full">
-                                    <article className="border border-border p-5 rounded-lg h-full hover:bg-muted/30 transition-colors flex flex-col">
-                                        <div className="flex items-center text-[10px] text-muted-foreground mb-2 font-mono">
-                                            <Calendar size={10} className="mr-1.5" />
-                                            {item.date}
-                                        </div>
-                                        <h3 className="text-sm font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2 leading-snug">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-[11px] text-muted-foreground line-clamp-2 flex-grow mb-4">
-                                            {item.description}
-                                        </p>
-                                        <div className="flex flex-wrap gap-1.5 mt-auto">
-                                            {item.tags?.slice(0, 2).map((tag) => (
-                                                <span key={tag} className="text-[9px] px-1.5 py-0.5 bg-muted rounded font-mono">
-                                                    #{tag}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </article>
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                )}
-        </motion.div>
+      <div className="min-h-screen flex items-center justify-center font-mono text-sm text-muted-foreground pt-20">
+        Loading…
+      </div>
     );
+  }
+  if (!blog) return <NotFound />;
+
+  const readingTime = Math.ceil(blog.content.split(/\s+/).length / 200);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.98 }}
+      transition={{ duration: 0.3 }}
+      className="min-h-screen bg-background"
+    >
+      <ReadingProgressBar />
+
+      <article className="container-site pt-28 pb-12 max-w-3xl">
+        <Link
+          to="/blog"
+          className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground transition-colors hover:text-foreground mb-8"
+        >
+          <ArrowLeft size={14} />
+          Back to Notes
+        </Link>
+
+        <header className="mb-10 pb-8 border-b border-border/40">
+          <h1 className="text-pixel text-2xl sm:text-3xl lg:text-4xl leading-tight mb-4">
+            {blog.title}
+          </h1>
+
+          <div className="flex flex-wrap items-center gap-4 text-[11px] font-mono text-muted-foreground">
+            <span>{blog.date}</span>
+            {blog.tags && <span>{blog.tags.join(" · ")}</span>}
+            <span>{readingTime} min read</span>
+          </div>
+        </header>
+
+        <div
+          className="prose dark:prose-invert max-w-none font-mono
+            prose-headings:font-pixel prose-headings:tracking-wide
+            prose-p:text-sm prose-p:leading-relaxed prose-p:text-muted-foreground
+            prose-a:text-foreground prose-a:underline prose-a:underline-offset-4 hover:prose-a:text-foreground/70
+            prose-code:text-foreground prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-xs prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-transparent prose-pre:p-0 prose-pre:border-none
+            prose-strong:text-foreground prose-li:text-muted-foreground"
+        >
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code(props) {
+                const { children, className, ...rest } = props;
+                const match = /language-(\w+)/.exec(className || "");
+
+                if (match && match[1] === "mermaid") {
+                  return (
+                    <Suspense
+                      fallback={
+                        <div className="my-8 p-6 bg-secondary/50 rounded-xl text-sm text-muted-foreground">
+                          Loading diagram…
+                        </div>
+                      }
+                    >
+                      <Mermaid chart={String(children).replace(/\n$/, "")} />
+                    </Suspense>
+                  );
+                }
+
+                return match ? (
+                  <div className="not-prose">
+                    <SyntaxHighlighter
+                      PreTag="div"
+                      language={match[1]}
+                      style={resolvedTheme === "dark" ? vscDarkPlus : vs}
+                      customStyle={{
+                        margin: "1.5rem 0",
+                        borderRadius: "0.75rem",
+                        fontSize: "0.8125rem",
+                        backgroundColor: resolvedTheme === "dark" ? "#0a0a0a" : "#f5efe6",
+                        padding: "1.25rem",
+                        border: "1px solid hsl(var(--border))",
+                      }}
+                    >
+                      {String(children).replace(/\n$/, "")}
+                    </SyntaxHighlighter>
+                  </div>
+                ) : (
+                  <code {...rest} className={className}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
+          >
+            {blog.content}
+          </Markdown>
+        </div>
+      </article>
+
+      {moreBlogs.length > 0 && (
+        <div className="container-site max-w-3xl border-t border-border/40 py-12">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-pixel text-lg">More Notes</h2>
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-foreground"
+            >
+              View All
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+          <div className="space-y-6">
+            {moreBlogs.map((item) => (
+              <Link to={`/blog/${item.slug}`} key={item.slug} className="block group">
+                <article className="border-b border-border/40 pb-6">
+                  <h3 className="text-pixel text-base group-hover:text-foreground/80 transition-colors mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-[11px] font-mono text-muted-foreground">{item.date}</p>
+                </article>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </motion.div>
+  );
 };
 
 export default BlogPostPage;

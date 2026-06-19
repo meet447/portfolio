@@ -1,33 +1,31 @@
-import { Button } from "@/components/ui/button";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, Linkedin } from "lucide-react";
 
 const GetInTouchBanner = () => {
   return (
-    <section className="container-resume section-spacing">
-      <div className="border border-border rounded-lg p-8 text-center bg-card">
-        <div className="mb-4">
-          <MessageCircle className="h-12 w-12 mx-auto text-accent mb-4" />
-          <h2 className="text-2xl font-bold mb-2">Want to work on a project together?</h2>
-          <p className="text-muted-foreground mb-6">
-            I'm always excited to collaborate on interesting projects. Let's discuss your ideas and bring them to life!
-          </p>
-        </div>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            className="bg-accent text-accent-foreground hover:bg-accent/90"
-            onClick={() => window.open("mailto:meetsonawane3@gmail.com?subject=Project Collaboration", "_blank")}
+    <section>
+      <div className="card-surface p-8 sm:p-12 text-center max-w-2xl mx-auto">
+        <h2 className="text-pixel text-2xl sm:text-3xl mb-3">Get in Touch</h2>
+        <p className="text-sm font-mono text-muted-foreground mb-8 leading-relaxed">
+          I'm always excited to collaborate on interesting projects. Let's discuss your ideas and bring them to life!
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="mailto:meetsonawane3@gmail.com?subject=Project Collaboration"
+            className="social-btn justify-center bg-foreground text-background hover:bg-foreground/90 hover:border-foreground"
           >
-            <Mail className="h-4 w-4 mr-2" />
+            <Mail size={16} />
             Get in Touch
-          </Button>
-          
-          <Button 
-            variant="outline"
-            onClick={() => window.open("https://www.linkedin.com/in/meet-sonawane/", "_blank")}
+          </a>
+          <a
+            href="https://www.linkedin.com/in/meet-sonawane/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-btn justify-center"
           >
+            <Linkedin size={16} />
             Connect on LinkedIn
-          </Button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,0 +1,30 @@
+const techColorMap: Record<string, string> = {
+  React: "border-blue-400/50 text-blue-700 dark:text-blue-300/90",
+  "React.js": "border-blue-400/50 text-blue-700 dark:text-blue-300/90",
+  "Next.js": "border-foreground/30 text-foreground/80",
+  TypeScript: "border-blue-500/50 text-blue-700 dark:text-blue-300/90",
+  JavaScript: "border-yellow-500/50 text-yellow-700 dark:text-yellow-300/90",
+  Python: "border-yellow-600/50 text-yellow-800 dark:text-yellow-300/90",
+  Rust: "border-orange-500/50 text-orange-700 dark:text-orange-300/90",
+  "Node.js": "border-green-600/50 text-green-700 dark:text-green-300/90",
+  PostgreSQL: "border-blue-400/50 text-blue-700 dark:text-blue-300/90",
+  MongoDB: "border-green-600/50 text-green-700 dark:text-green-300/90",
+  Redis: "border-red-400/50 text-red-700 dark:text-red-300/90",
+  AWS: "border-orange-500/50 text-orange-700 dark:text-orange-300/90",
+  Docker: "border-blue-500/50 text-blue-700 dark:text-blue-300/90",
+  Kubernetes: "border-blue-500/50 text-blue-700 dark:text-blue-300/90",
+  FastAPI: "border-teal-500/50 text-teal-700 dark:text-teal-300/90",
+  Supabase: "border-green-500/50 text-green-700 dark:text-green-300/90",
+  Firebase: "border-yellow-500/50 text-yellow-700 dark:text-yellow-300/90",
+  Swift: "border-orange-500/50 text-orange-700 dark:text-orange-300/90",
+  "C++": "border-blue-500/50 text-blue-700 dark:text-blue-300/90",
+  LangChain: "border-green-500/50 text-green-700 dark:text-green-300/90",
+  AI: "border-purple-500/50 text-purple-700 dark:text-purple-300/90",
+  LLM: "border-purple-500/50 text-purple-700 dark:text-purple-300/90",
+  SIMD: "border-orange-500/50 text-orange-700 dark:text-orange-300/90",
+  WASM: "border-purple-500/50 text-purple-700 dark:text-purple-300/90",
+  Tauri: "border-cyan-600/50 text-cyan-700 dark:text-cyan-300/90",
+};
+
+export const getTechColor = (tech: string): string =>
+  techColorMap[tech] ?? "border-border text-muted-foreground";

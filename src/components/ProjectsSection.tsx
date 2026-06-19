@@ -1,81 +1,31 @@
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import projects from "@/content/projects.json";
+import SectionTitle from "./SectionTitle";
+import ProjectCard from "./ProjectCard";
 
 const ProjectsSection = () => {
   const featuredProjects = projects.filter((p) => p.featured);
 
   return (
-    <section id="projects" className="container-resume section-spacing">
-      <div className="flex items-center justify-between mb-8">
-        <h2 className="text-section-title"># FEATURED PROJECTS</h2>
-        <Link to="/projects">
-          <Button variant="outline" className="text-sm font-mono">
-            View All Projects →
-          </Button>
-        </Link>
+    <section id="projects" className="container-site section-spacing">
+      <div className="content-column mb-8 sm:mb-10">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <SectionTitle title="Projects" className="mb-0" />
+          <Link
+            to="/projects"
+            className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground transition-colors hover:text-foreground shrink-0 pb-1"
+          >
+            View All Projects
+            <ArrowRight size={14} />
+          </Link>
+        </div>
+        <p className="text-section-sub -mt-6 sm:-mt-8">A collection of things I've built</p>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featuredProjects.map((project) => (
-          <div key={project.title} className="group border border-border rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300">
-            {/* Project Thumbnail */}
-            <div className="relative overflow-hidden">
-              {project.image && (
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  width="800"
-                  height="384"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              )}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-            </div>
-            
-            {/* Project Info */}
-            <div className="p-6">
-              <h3 className="text-job-title mb-2">{project.title}</h3>
-              <p className="text-body mb-4 line-clamp-2">{project.description}</p>
-              
-              {/* Tech Stack */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="text-xs px-2 py-1 bg-muted rounded font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              
-              {/* Links */}
-              <div className="flex items-center gap-3">
-                <a 
-                  href={project.github}
-                  className="flex items-center gap-1 text-sm text-muted-foreground hover:text-accent transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github size={16} />
-                  Code
-                </a>
-                <a 
-                  href={project.live}
-                  className="flex items-center gap-1 text-sm text-muted-foreground hover:text-accent transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink size={16} />
-                  Live Demo
-                </a>
-              </div>
-            </div>
-          </div>
+          <ProjectCard key={project.title} project={project} />
         ))}
       </div>
     </section>

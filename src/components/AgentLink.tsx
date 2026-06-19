@@ -20,7 +20,7 @@ const AgentLink = () => {
       target="_blank"
       rel="noopener noreferrer"
       title="View this page as Markdown (for LLMs and agents)"
-      className="fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 rounded-full border border-border bg-background/95 px-3 py-2 font-mono text-xs text-muted-foreground shadow-md backdrop-blur transition-colors hover:bg-muted hover:text-foreground"
+      className="fixed bottom-4 right-4 z-50 inline-flex items-center gap-2 rounded-full border border-border/60 bg-nav/80 px-3 py-2 font-mono text-xs text-muted-foreground backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground"
     >
       <Bot className="h-3.5 w-3.5" />
       <span className="hidden sm:inline">Are you an agent?</span>
