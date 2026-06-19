@@ -44,6 +44,17 @@
     "featured": true
   },
   {
+    "title": "Bakwas v1 Alpha",
+    "category": "ML · Prompt Compression",
+    "description": "Extractive prompt compression model fine-tuned on DistilBERT (66M params). Binary token classifier that strips redundant LLM prompt tokens — reducing context cost and KV-cache latency without generative rewriting. Published on Hugging Face with interactive demo.",
+    "image": "/projects/bakwas.png",
+    "tech": ["Python", "PyTorch", "Transformers", "DistilBERT", "Hugging Face"],
+    "github": "https://huggingface.co/meet447/bakwas-v1-alpha",
+    "live": "https://huggingface.co/spaces/meet447/Bakwas-v1-alpha-demo",
+    "year": "2026",
+    "featured": false
+  },
+  {
     "title": "Unio",
     "category": "AI · API Gateway",
     "description": "Unified OpenAI-compatible gateway for multiple LLM providers. Supports key rotation, automatic fallback, and centralized model management across 10+ providers.",

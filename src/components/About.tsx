@@ -12,6 +12,10 @@ const milestones = [
     body: "At Hooman Digital, I co-designed the product roadmap and core infrastructure for the InferiaLLM platform — building a modular adapter layer via SkyPilot to automate zero-downtime model deployments across AWS, GCP, and decentralized GPU grids (Nosana, Akash).",
   },
   {
+    title: "Published ML Model on Hugging Face",
+    body: "Fine-tuned and released Bakwas v1 Alpha — an extractive prompt compression model built on DistilBERT that classifies tokens as signal or noise, cutting LLM context bloat without generative rewriting. Includes a public demo Space for interactive evaluation.",
+  },
+  {
     title: "National Recognition & System Acquisition",
     body: "Won 1st place at the national Smart India Hackathon among thousands of teams. Engineered an OSINT network reconnaissance framework capable of unmasking origin IPs behind reverse proxies — subsequently acquired by a state police department for operational use.",
   },

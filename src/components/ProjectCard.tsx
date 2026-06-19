@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, Box } from "lucide-react";
 import TechTag from "./TechTag";
 
 interface ProjectCardProps {
@@ -15,8 +15,17 @@ interface ProjectCardProps {
   compact?: boolean;
 }
 
+const getSourceLink = (url: string) => {
+  if (url.includes("huggingface.co")) {
+    return { label: "Model", Icon: Box };
+  }
+  return { label: "Code", Icon: Github };
+};
+
 const ProjectCard = ({ project, compact = false }: ProjectCardProps) => {
   const hasLiveDemo = Boolean(project.live && project.live !== project.github);
+  const sourceLink = getSourceLink(project.github);
+  const SourceIcon = sourceLink.Icon;
 
   return (
     <div className="card-surface group">
@@ -70,8 +79,8 @@ const ProjectCard = ({ project, compact = false }: ProjectCardProps) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Github size={14} />
-            Code
+            <SourceIcon size={14} />
+            {sourceLink.label}
           </a>
           {hasLiveDemo && (
             <a
