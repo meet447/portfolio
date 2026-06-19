@@ -163,12 +163,4 @@
   .card-surface {
     @apply rounded-xl border border-border/60 bg-card/50 overflow-hidden transition-colors hover:border-border;
   }
-
-  .timeline-line {
-    @apply absolute left-0 top-0 bottom-0 w-px bg-border;
-  }
-
-  .timeline-dot {
-    @apply absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-muted-foreground;
-  }
 }
