@@ -1,26 +1,22 @@
 # Meet Sonawane
 
-Full Stack Software Engineer with 2+ years of experience building scalable web
-applications and backend systems. Specializes in Python, React, and cloud
-architecture, with a strong focus on efficient, maintainable solutions.
+AI/ML and Backend Infrastructure Engineer specializing in low-latency backend systems, MLOps, distributed compute abstraction, and multi-agent execution environments.
 
-- Website: https://meetsonawane.vercel.app
+- Website: https://meetsonawane.me
 - GitHub: https://github.com/meet447
-- Email: meet.sonawane2015@gmail.com
+- Email: meetsonawane3@gmail.com
+- LinkedIn: https://www.linkedin.com/in/meet-sonawane/
 
-## What I Do
+## Highlights
 
-- Full-stack web application development
-- Backend API design and microservices
-- Cloud infrastructure and DevOps
-- Database design and optimization
+- MLOps Intern at Hooman Digital — InferiaLLM platform, GPU orchestration via SkyPilot
+- Y Combinator AI Startup School 2026
+- Smart India Hackathon National Winner 2024
+- Builder of Koraku (ReAct agent runtime) and Chipling.xyz (multimodal vector discovery)
 
-## Interests
+## Core Stack
 
-- Artificial Intelligence & Machine Learning
-- Open-source contributions
-- System architecture & scalability
-- Developer tools & productivity
+Python, Go, React, FastAPI, Docker, Kubernetes, Redis, LLM systems, PostgreSQL
 
 ## Links
 

@@ -1,17 +1,19 @@
 [
   {
-    "title": "MeuxCompanion",
-    "description": "A self-hosted AI companion web app with anime-style Live2D and VRM characters. Talk via text or voice with expressive facial animations, lip-synced speech, and per-sentence emotional reactions.",
-    "image": "/projects/meuxcompanion.png",
-    "tech": ["Rust", "TypeScript", "Live2D", "VRM", "Tauri"],
-    "github": "https://github.com/meet447/MeuxCompanion",
-    "live": "https://github.com/meet447/MeuxCompanion",
+    "title": "SurgeDB",
+    "category": "Infrastructure · Vector Database",
+    "description": "SIMD-powered vector database in pure Rust for the edge. Indexes 100k vectors in 39MB RAM with Adaptive HNSW, SQ8/Binary quantization, and ACID-compliant persistence.",
+    "image": "/projects/SurgeDB.png",
+    "tech": ["Rust", "SIMD", "HNSW", "Vector Database", "WASM"],
+    "github": "https://github.com/meet447/surgedb",
+    "live": "",
     "year": "2026",
-    "featured": true
+    "featured": false
   },
   {
     "title": "Koraku",
-    "description": "Your personal AI buddy and second brain — open-source. A self-hosted assistant that remembers context across conversations and helps you organize knowledge.",
+    "category": "AI · Open Source",
+    "description": "Self-hostable ReAct agent runtime with isolated 3-tier sandbox routing. Open-source AI assistant for context-aware knowledge management and multi-step agent execution.",
     "image": "/projects/koraku.png",
     "tech": ["Python", "TypeScript", "AI", "LLM"],
     "github": "https://github.com/meet447/Koraku",
@@ -20,18 +22,9 @@
     "featured": true
   },
   {
-    "title": "SurgeDB",
-    "description": "A SIMD-powered, ultra-lightweight vector database for the Edge, written in pure Rust. Features Adaptive HNSW indexing, SQ8/Binary quantization, and ACID-compliant persistence. Indexes 100k vectors with just 39MB RAM.",
-    "image": "/projects/SurgeDB.png",
-    "tech": ["Rust", "SIMD", "HNSW", "Vector Database", "WASM"],
-    "github": "https://github.com/meet447/surgedb",
-    "live": "https://github.com/meet447/surgedb",
-    "year": "2026",
-    "featured": true
-  },
-  {
     "title": "Chipling",
-    "description": "The Visual Discovery Engine. A digital ocean that uses vector embeddings to let you search, curate, and discover inspiration by concept rather than keywords.",
+    "category": "SaaS · Visual Search",
+    "description": "Multimodal vector discovery engine using CLIP models for concept-based search. Semantic visual search platform scaling to 500+ active users.",
     "image": "/projects/chipling.png",
     "tech": ["Next.js", "Supabase", "PostgreSQL", "FastAPI", "Vector Embeddings"],
     "github": "https://github.com/meet447/chipling",
@@ -40,59 +33,76 @@
     "featured": true
   },
   {
+    "title": "MeuxCompanion",
+    "category": "AI · Desktop App",
+    "description": "Self-hosted AI companion with Live2D/VRM characters, voice chat, lip-synced speech, and per-sentence emotional reactions. Built with Rust + Tauri for native performance.",
+    "image": "/projects/meuxcompanion.png",
+    "tech": ["Rust", "TypeScript", "Live2D", "VRM", "Tauri"],
+    "github": "https://github.com/meet447/MeuxCompanion",
+    "live": "",
+    "year": "2026",
+    "featured": false
+  },
+  {
     "title": "Unio",
-    "description": "A unified OpenAI-compatible API service where users can add keys for multiple LLM providers, enabling seamless key rotation, fallback, and centralized model management.",
+    "category": "AI · API Gateway",
+    "description": "Unified OpenAI-compatible gateway for multiple LLM providers. Supports key rotation, automatic fallback, and centralized model management across 10+ providers.",
     "image": "/projects/unio.png",
     "tech": ["Python", "FastAPI", "Docker", "React", "Supabase", "Redis"],
     "github": "https://github.com/meet447/Unio",
     "live": "https://unio.chipling.xyz",
     "year": "2025",
-    "featured": false
+    "featured": true
   },
   {
     "title": "Axiom",
-    "description": "Open-source AI search engine inspired by Perplexity AI, with AI agents and additional features for real-time search, summarization, and question-answering.",
+    "category": "AI · Search Engine",
+    "description": "Open-source AI search engine inspired by Perplexity. Real-time web search, summarization, and multi-agent question-answering with cited sources.",
     "image": "/projects/axiom.png",
     "tech": ["Next.js", "Node.js", "FastAPI", "Supabase", "Redis"],
     "github": "https://github.com/meet447/Axiomai",
     "live": "https://axiom.chipling.xyz",
     "year": "2025",
-    "featured": false
+    "featured": true
   },
   {
     "title": "Schemely",
-    "description": "AI-powered tool to convert natural language and URLs into structured JSON via schema extraction, making data parsing easier.",
+    "category": "AI · Developer Tools",
+    "description": "Converts natural language and URLs into structured JSON via LLM-powered schema extraction — automating data parsing pipelines for developers.",
     "image": "/projects/schemely.png",
     "tech": ["Python", "FastAPI", "LLMs", "Schema Extraction"],
     "github": "https://github.com/meet447/schemely",
-    "live": "https://github.com/meet447/schemely",
+    "live": "",
     "year": "2025",
     "featured": false
   },
   {
     "title": "FastHost",
-    "description": "Self-hosted Python backend deployment platform. Deploy FastAPI or Flask apps seamlessly with Docker and container orchestration.",
+    "category": "DevOps · Deployment",
+    "description": "Self-hosted Python backend deployment platform. One-click deploy for FastAPI and Flask apps with Docker-based container orchestration.",
     "tech": ["Python", "FastAPI", "Flask", "Docker", "Deployment"],
     "github": "https://github.com/meet447/fasthost",
-    "live": "https://github.com/meet447/fasthost",
+    "live": "",
     "year": "2025",
     "featured": false
   },
   {
     "title": "Dokusha",
-    "description": "A manga and webtoon reader app built with React Native, inspired by Tachiyomi. Supports clean UI, library management, and smooth reading experience.",
+    "category": "Mobile · Reader App",
+    "description": "Manga and webtoon reader built with React Native, inspired by Tachiyomi. Clean UI with library management and offline reading support.",
     "tech": ["React Native", "JavaScript", "Mobile"],
     "github": "https://github.com/meet447/dokusha",
-    "live": "https://github.com/meet447/dokusha",
+    "live": "",
     "year": "2024",
     "featured": false
   },
   {
     "title": "MeuxVtuber",
-    "description": "Lightweight AI VTuber project with no API key requirements, capable of streaming and integrating AI characters in real-time.",
+    "category": "AI · Streaming",
+    "description": "Lightweight AI VTuber with no API key requirements. Real-time streaming integration with AI character dialogue and expression control.",
     "tech": ["Python", "LLMs", "AI", "Streaming"],
     "github": "https://github.com/meet447/meuxvtuber",
-    "live": "https://github.com/meet447/meuxvtuber",
+    "live": "",
     "year": "2023",
     "featured": false
   }

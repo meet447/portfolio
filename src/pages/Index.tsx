@@ -2,7 +2,6 @@ import About from "@/components/About";
 import ProjectsSection from "@/components/ProjectsSection";
 import WorkExperience from "@/components/WorkExperience";
 import Achievements from "@/components/Achievements";
-import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import HireMeBanner from "@/components/HireMeBanner";
 import LatestBlogs from "@/components/LatestBlogs";
@@ -26,16 +25,13 @@ const Index = () => {
       <main>
         <About />
         <motion.div {...fadeInUp}>
+          <ProjectsSection />
+        </motion.div>
+        <motion.div {...fadeInUp}>
           <WorkExperience />
         </motion.div>
         <motion.div {...fadeInUp}>
           <Achievements />
-        </motion.div>
-        <motion.div {...fadeInUp}>
-          <Skills />
-        </motion.div>
-        <motion.div {...fadeInUp}>
-          <ProjectsSection />
         </motion.div>
         <motion.div {...fadeInUp}>
           <LatestBlogs />

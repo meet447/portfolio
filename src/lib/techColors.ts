@@ -5,6 +5,7 @@ const techColorMap: Record<string, string> = {
   TypeScript: "border-blue-500/50 text-blue-700 dark:text-blue-300/90",
   JavaScript: "border-yellow-500/50 text-yellow-700 dark:text-yellow-300/90",
   Python: "border-yellow-600/50 text-yellow-800 dark:text-yellow-300/90",
+  Go: "border-cyan-600/50 text-cyan-700 dark:text-cyan-300/90",
   Rust: "border-orange-500/50 text-orange-700 dark:text-orange-300/90",
   "Node.js": "border-green-600/50 text-green-700 dark:text-green-300/90",
   PostgreSQL: "border-blue-400/50 text-blue-700 dark:text-blue-300/90",
