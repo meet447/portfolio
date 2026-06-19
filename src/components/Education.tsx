@@ -11,18 +11,27 @@ const Education = () => {
           <div className="absolute left-[4px] top-1.5 h-2.5 w-2.5 rounded-full bg-muted-foreground ring-4 ring-background" aria-hidden />
 
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-4">
-            <div>
-              <h3 className="text-display text-base font-semibold">
-                Bachelor of Engineering in Electronics & Telecommunication
-              </h3>
-              <p className="text-sm font-mono text-muted-foreground mt-1">
-                Bharati Vidyapeeth College of Engineering
-              </p>
-              <p className="text-xs font-mono text-muted-foreground/70 mt-0.5">
-                Navi Mumbai, Maharashtra
-              </p>
+            <div className="flex items-start gap-3">
+              <img
+                src="/companies/bvcoen.png"
+                alt="Bharati Vidyapeeth College of Engineering logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 shrink-0 rounded-md border border-border/60 object-contain bg-white p-0.5"
+              />
+              <div>
+                <h3 className="text-display text-base font-semibold">
+                  Bachelor of Engineering in Electronics & Telecommunication
+                </h3>
+                <p className="text-sm font-mono text-muted-foreground mt-1">
+                  Bharati Vidyapeeth College of Engineering
+                </p>
+                <p className="text-xs font-mono text-muted-foreground/70 mt-0.5">
+                  Navi Mumbai, Maharashtra
+                </p>
+              </div>
             </div>
-            <p className="text-xs font-mono text-muted-foreground shrink-0">2023 - 2027</p>
+            <p className="text-xs font-mono text-muted-foreground shrink-0 sm:text-right">2023 - 2027</p>
           </div>
 
           <p className="text-body-prose">

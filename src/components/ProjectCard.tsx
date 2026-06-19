@@ -29,6 +29,10 @@ const ProjectCard = ({ project, compact = false }: ProjectCardProps) => {
             height={384}
             loading="lazy"
             decoding="async"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = "/placeholder.svg";
+            }}
             className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] ${compact ? "h-40" : "h-48 sm:h-52"}`}
           />
           <div className="absolute top-3 right-3">
